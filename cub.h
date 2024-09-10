@@ -2,14 +2,23 @@
 
 #ifndef CUB_H
 #define CUB_H
-
+#define BUFFER_SIZE 42
 
 #include <unistd.h>
 #include <stdlib.h>
-#include<math.h>
+#include <math.h>
+#include <fcntl.h>
 #include <stdio.h>
 #include "./MLX42/include/MLX42/MLX42.h"
 
+#include "libft/libft.h"
+
+typedef enum e_error {
+	INVALID_INPUT,
+	MAP_CHAR,
+	EMPTY_FILE,
+	NEWLINE_MAP
+}	t_error;
 
 typedef struct my_mlx_s
 {
@@ -32,7 +41,9 @@ int32_t ft_pixel(int32_t r, int32_t g, int32_t b, int32_t a);
 void	normalize_angle(double *angle);
 
 
-
+void	error_mssg(int flag);
+void	get_layout(char *av);
+char	*get_next_line(int fd);
 
 
 
