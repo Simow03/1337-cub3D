@@ -5,6 +5,7 @@
 #define BUFFER_SIZE 42
 
 #include <unistd.h>
+#include <errno.h>
 #include <stdlib.h>
 #include <math.h>
 #include <fcntl.h>
@@ -18,7 +19,10 @@ typedef enum e_error {
 	MAP_CHAR,
 	EMPTY_FILE,
 	NEWLINE_MAP,
-	TEXTURE_ARG
+	TEXTURE_ARG,
+	NOT_EXIST,
+	PERMISSION,
+	CHECK_FILE
 }	t_error;
 
 typedef struct my_mlx_s

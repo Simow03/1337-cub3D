@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 14:58:19 by mstaali           #+#    #+#             */
-/*   Updated: 2024/09/12 14:59:26 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/09/12 17:00:57 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,30 @@ void	fill_texture(t_texture *texture, char **components)
 		texture->c = ft_strdup(components[1]);
 }
 
+void	check_paths(char **path)
+{
+	if (!ft_strcmp(path[0], "NO") || !ft_strcmp(path[0], "SO")
+		|| !ft_strcmp(path[0], "EA") || !ft_strcmp(path[0], "WE"))
+	{
+		if (access(path[1], F_OK) == 0)
+			return ;
+		else
+		{
+			if (errno == ENOENT)
+				error_mssg(NOT_EXIST);
+			else if (errno == EACCES)
+				error_mssg(PERMISSION);
+			else
+				error_mssg(CHECK_FILE);
+		}
+	}
+	else
+	{
+		//check color
+		return ;
+	}
+}
+
 void	check_textures(char **layout)
 {
 	t_texture	*texture;
@@ -64,6 +88,7 @@ void	check_textures(char **layout)
 			error_mssg(TEXTURE_ARG);
 		if (!is_valid_texture(components[0]))
 			error_mssg(TEXTURE_ARG);
+		check_paths(components);
 		fill_texture(texture, components);
 	}
 }
