@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 11:34:46 by mstaali           #+#    #+#             */
-/*   Updated: 2024/09/11 20:51:26 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/09/12 14:59:18 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,22 +70,5 @@ void	get_layout(char *av)
 	}
 	is_map_valid(line);
 	layout = ft_split(line, '\n');
-	return (layout);
-}
-
-void	init_texture(t_texture *texture)
-{
-	texture->no = NULL;
-	texture->so = NULL;
-	texture->we = NULL;
-	texture->ea = NULL;
-	texture->f = NULL;
-	texture->c = NULL;
-}
-
-void	check_textures(char **layout)
-{
-	t_texture	*texture;
-
-	init_texture(texture);
+	check_textures(layout);
 }

@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 14:52:06 by mstaali           #+#    #+#             */
-/*   Updated: 2024/09/10 18:38:41 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/09/12 13:09:26 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,7 @@ void	error_mssg(int flag)
 		ft_putstr_fd("Map contains newline\n\n", STDERR_FILENO);
 	if (flag == MAP_CHAR)
 		ft_putstr_fd("Unrecognized map character\n\n", STDERR_FILENO);
+	if (flag == TEXTURE_ARG)
+		ft_putstr_fd("Invalid texture arguments\n\n", STDERR_FILENO);
 	exit(EXIT_FAILURE);
 }

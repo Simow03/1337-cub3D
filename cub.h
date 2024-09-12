@@ -17,7 +17,8 @@ typedef enum e_error {
 	INVALID_INPUT,
 	MAP_CHAR,
 	EMPTY_FILE,
-	NEWLINE_MAP
+	NEWLINE_MAP,
+	TEXTURE_ARG
 }	t_error;
 
 typedef struct my_mlx_s
@@ -54,7 +55,7 @@ void	normalize_angle(double *angle);
 void	error_mssg(int flag);
 void	get_layout(char *av);
 char	*get_next_line(int fd);
-
+void	check_textures(char **layout);
 
 
 
