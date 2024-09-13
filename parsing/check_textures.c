@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 14:58:19 by mstaali           #+#    #+#             */
-/*   Updated: 2024/09/13 22:46:07 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/09/13 22:58:02 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,22 @@ void	fill_color(t_color *color, char *component)
 {
 	char	**rgb;
 	int		i;
+	int		count;
 
+	i = -1;
+	count = 0;
+	while (component[++i])
+		if (component[i] == ',')
+			count++;
+	if (count != 2)
+		error_mssg(COLORS);
 	rgb = ft_split(component, ',');
 	if (ft_dbl_strlen(rgb) != 3)
 		error_mssg(COLORS);
-	i = 0;
-	while (rgb[i])
-	{
+	i = -1;
+	while (rgb[++i])
 		if (ft_atoi(rgb[i]) < 0 || ft_atoi(rgb[i]) > 255)
 			error_mssg(COLORS);
-		i++;
-	}
 	color->r = ft_atoi(rgb[0]);
 	color->g = ft_atoi(rgb[1]);
 	color->b = ft_atoi(rgb[2]);
