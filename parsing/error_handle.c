@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 14:52:06 by mstaali           #+#    #+#             */
-/*   Updated: 2024/09/12 16:59:54 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/09/13 22:13:13 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,7 @@ void	error_mssg(int flag)
 		ft_putstr_fd("Permission denied\n\n", STDERR_FILENO);
 	if (flag == CHECK_FILE)
 		ft_putstr_fd("Path for file is not checked\n\n", STDERR_FILENO);
+	if (flag == COLORS)
+		ft_putstr_fd("Invalid color pattern\n\n", STDERR_FILENO);
 	exit(EXIT_FAILURE);
 }

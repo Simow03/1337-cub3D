@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 14:58:19 by mstaali           #+#    #+#             */
-/*   Updated: 2024/09/12 17:00:57 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/09/13 22:46:07 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@ void	init_texture(t_texture *texture)
 	texture->ea = NULL;
 	texture->f = NULL;
 	texture->c = NULL;
+	texture->f_clr = malloc(sizeof(t_color));
+	if (!texture->f_clr)
+		return ;
+	texture->c_clr = malloc(sizeof(t_color));
+	if (!texture->c_clr)
+		return ;
 }
 
 int	is_valid_texture(char *component)
@@ -29,6 +35,26 @@ int	is_valid_texture(char *component)
 		|| !ft_strcmp(component, "F") || !ft_strcmp(component, "C"))
 			return (1);
 	return (0);
+}
+
+void	fill_color(t_color *color, char *component)
+{
+	char	**rgb;
+	int		i;
+
+	rgb = ft_split(component, ',');
+	if (ft_dbl_strlen(rgb) != 3)
+		error_mssg(COLORS);
+	i = 0;
+	while (rgb[i])
+	{
+		if (ft_atoi(rgb[i]) < 0 || ft_atoi(rgb[i]) > 255)
+			error_mssg(COLORS);
+		i++;
+	}
+	color->r = ft_atoi(rgb[0]);
+	color->g = ft_atoi(rgb[1]);
+	color->b = ft_atoi(rgb[2]);
 }
 
 void	fill_texture(t_texture *texture, char **components)
@@ -42,9 +68,9 @@ void	fill_texture(t_texture *texture, char **components)
 	else if (!ft_strcmp(components[0], "EA"))
 		texture->ea = ft_strdup(components[1]);
 	else if (!ft_strcmp(components[0], "F"))
-		texture->f = ft_strdup(components[1]);
+		fill_color(texture->f_clr, components[1]);
 	else if (!ft_strcmp(components[0], "C"))
-		texture->c = ft_strdup(components[1]);
+		fill_color(texture->c_clr, components[1]);
 }
 
 void	check_paths(char **path)
@@ -63,11 +89,6 @@ void	check_paths(char **path)
 			else
 				error_mssg(CHECK_FILE);
 		}
-	}
-	else
-	{
-		//check color
-		return ;
 	}
 }
 
