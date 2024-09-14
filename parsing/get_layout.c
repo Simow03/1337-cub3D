@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 11:34:46 by mstaali           #+#    #+#             */
-/*   Updated: 2024/09/12 14:59:18 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/09/14 22:47:56 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,6 @@ void	get_layout(char *av)
 	is_map_valid(line);
 	layout = ft_split(line, '\n');
 	check_textures(layout);
+	if (!is_surrounded_by_walls(layout + 6))
+		error_mssg(WALLS);
 }

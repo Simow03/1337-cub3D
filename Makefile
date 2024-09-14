@@ -7,7 +7,7 @@ LIBS = -L /Users/mstaali/.brew/lib -lglfw -framework Cocoa -framework OpenGL -fr
 NAME = cub3D
 
 SRCS = cub.c ./execution/draw.c ./execution/hooks.c ./execution/ray_casting.c parsing/error_handle.c parsing/get_layout.c \
-	parsing/get_next_line.c parsing/check_textures.c
+	parsing/get_next_line.c parsing/check_textures.c parsing/extract_map.c
 
 OBJS = $(SRCS:.c=.o)
 

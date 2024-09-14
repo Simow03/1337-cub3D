@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 14:52:06 by mstaali           #+#    #+#             */
-/*   Updated: 2024/09/13 22:13:13 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/09/14 22:36:54 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,14 @@ void	error_mssg(int flag)
 	if (flag == TEXTURE_ARG)
 		ft_putstr_fd("Invalid texture arguments\n\n", STDERR_FILENO);
 	if (flag == NOT_EXIST)
-		ft_putstr_fd("File does not exist\n\n", STDERR_FILENO);
+		ft_putstr_fd("Texture file does not exist\n\n", STDERR_FILENO);
 	if (flag == PERMISSION)
 		ft_putstr_fd("Permission denied\n\n", STDERR_FILENO);
 	if (flag == CHECK_FILE)
 		ft_putstr_fd("Path for file is not checked\n\n", STDERR_FILENO);
 	if (flag == COLORS)
 		ft_putstr_fd("Invalid color pattern\n\n", STDERR_FILENO);
+	if (flag == WALLS)
+		ft_putstr_fd("Map is not surrounded by walls\n\n", STDERR_FILENO);
 	exit(EXIT_FAILURE);
 }

@@ -1,13 +1,13 @@
-NO ./path_to_the_north_texture
+NO textures/example_no.webp
 
 
-SO ./path_to_the_south_texture
+SO textures/example_so.webp
 
 
-WE ./path_to_the_west_texture
+WE textures/example_we.webp
 
 
-EA ./path_to_the_east_texture
+EA textures/example_ea.webp
 
 
 F 9,100,90

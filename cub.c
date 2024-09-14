@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 13:33:23 by achater           #+#    #+#             */
-/*   Updated: 2024/09/10 18:47:05 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/09/14 22:48:34 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int main(int ac, char **av)
 {
 	int i;
 	int j;
-	my_mlx_t *mlx;
+	my_mlx_t	*mlx;
 
 	if (ac != 2)
 		error_mssg(INVALID_INPUT);
