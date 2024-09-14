@@ -15,6 +15,7 @@
 #include "libft/libft.h"
 
 typedef enum e_error {
+	EXTENSION,
 	INVALID_INPUT,
 	MAP_CHAR,
 	EMPTY_FILE,

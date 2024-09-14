@@ -6,11 +6,25 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 13:33:23 by achater           #+#    #+#             */
-/*   Updated: 2024/09/14 22:48:34 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/09/15 00:17:25 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
+
+void	check_extension(char *av)
+{
+	int	i;
+
+	i = 0;
+	while (av[i] && av[i] != '.')
+		i++;
+	if (av[i] != '.')
+		error_mssg(EXTENSION);
+	if (!ft_strcmp(&av[i], ".cub"))
+		return ;
+	error_mssg(EXTENSION);
+}
 
 int main(int ac, char **av)
 {
@@ -22,6 +36,7 @@ int main(int ac, char **av)
 		error_mssg(INVALID_INPUT);
 	else
 	{
+		check_extension(av[1]);
 		get_layout(av[1]);
 		mlx = malloc(sizeof(my_mlx_t));
 		mlx->block_size = 120;

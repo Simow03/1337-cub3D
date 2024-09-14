@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 14:52:06 by mstaali           #+#    #+#             */
-/*   Updated: 2024/09/14 22:36:54 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/09/15 00:15:25 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 void	error_mssg(int flag)
 {
 	ft_putstr_fd("\n\033[1;31mError:\033[0m ", STDERR_FILENO);
+	if (flag == EXTENSION)
+		ft_putstr_fd("Incorrect file extension\nUsage: ./cub3D <path_to_map_file.cub>\n\n", STDERR_FILENO);
 	if (flag == INVALID_INPUT)
 		ft_putstr_fd("Invalid input\nUsage: ./cub3D <path_to_map_file.cub>\n\n", STDERR_FILENO);
 	if (flag == EMPTY_FILE)
