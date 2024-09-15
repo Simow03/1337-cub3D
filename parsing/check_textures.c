@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 14:58:19 by mstaali           #+#    #+#             */
-/*   Updated: 2024/09/13 23:09:05 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/09/15 23:12:22 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,8 @@ void	init_texture(t_texture *texture)
 	texture->so = NULL;
 	texture->we = NULL;
 	texture->ea = NULL;
-	texture->f = NULL;
-	texture->c = NULL;
-	texture->f_clr = malloc(sizeof(t_color));
-	if (!texture->f_clr)
-		return ;
-	texture->c_clr = malloc(sizeof(t_color));
-	if (!texture->c_clr)
-		return ;
+	texture->c_clr = 0;	
+	texture->f_clr = 0;
 }
 
 int	is_valid_texture(char *component)
@@ -37,7 +31,7 @@ int	is_valid_texture(char *component)
 	return (0);
 }
 
-void	fill_color(t_color *color, char *component)
+unsigned int	rgb_to_uint(char *component)
 {
 	char	**rgb;
 	int		i;
@@ -57,9 +51,7 @@ void	fill_color(t_color *color, char *component)
 	while (rgb[++i])
 		if (ft_atoi(rgb[i]) < 0 || ft_atoi(rgb[i]) > 255)
 			error_mssg(COLORS);
-	color->r = ft_atoi(rgb[0]);
-	color->g = ft_atoi(rgb[1]);
-	color->b = ft_atoi(rgb[2]);
+	return ((ft_atoi(rgb[0]) << 16) | (ft_atoi(rgb[1]) << 8) | ft_atoi(rgb[2]));
 }
 
 void	fill_texture(t_texture *texture, char **components)
@@ -73,9 +65,9 @@ void	fill_texture(t_texture *texture, char **components)
 	else if (!ft_strcmp(components[0], "EA"))
 		texture->ea = ft_strdup(components[1]);
 	else if (!ft_strcmp(components[0], "F"))
-		fill_color(texture->f_clr, components[1]);
+		texture->f_clr = rgb_to_uint(components[1]);
 	else if (!ft_strcmp(components[0], "C"))
-		fill_color(texture->c_clr, components[1]);
+		texture->c_clr = rgb_to_uint(components[1]);
 }
 
 void	check_paths(char **path)

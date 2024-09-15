@@ -42,23 +42,14 @@ typedef struct my_mlx_s
 	int block_size;
 } my_mlx_t;
 
-typedef struct s_color
-{
-	int	r;
-	int	g;
-	int	b;
-}	t_color;
-
 typedef struct s_texture
 {
-	char	*no;
-	char	*so;
-	char	*we;
-	char	*ea;
-	char	*f;
-	char	*c;
-	t_color	*f_clr;
-	t_color	*c_clr;
+	char			*no;
+	char			*so;
+	char			*we;
+	char			*ea;
+	unsigned int	f_clr;
+	unsigned int	c_clr;
 }	t_texture;
 
 void	main_fct(my_mlx_t *mlx);
