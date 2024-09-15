@@ -25,7 +25,8 @@ typedef enum e_error {
 	PERMISSION,
 	CHECK_FILE,
 	COLORS,
-	WALLS
+	WALLS,
+	PLAYER_NOT_FOUND
 }	t_error;
 
 typedef struct my_mlx_s
@@ -73,7 +74,7 @@ void	get_layout(char *av);
 char	*get_next_line(int fd);
 void	check_textures(char **layout);
 int		is_surrounded_by_walls(char **layout);
-
+int		player_exists(char **layout);
 
 
 

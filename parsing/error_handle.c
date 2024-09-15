@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 14:52:06 by mstaali           #+#    #+#             */
-/*   Updated: 2024/09/15 00:15:25 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/09/15 21:10:13 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,7 @@ void	error_mssg(int flag)
 		ft_putstr_fd("Invalid color pattern\n\n", STDERR_FILENO);
 	if (flag == WALLS)
 		ft_putstr_fd("Map is not surrounded by walls\n\n", STDERR_FILENO);
+	if (flag == PLAYER_NOT_FOUND)
+		ft_putstr_fd("Player not found in map\n\n", STDERR_FILENO);
 	exit(EXIT_FAILURE);
 }

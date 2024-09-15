@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 23:02:44 by mstaali           #+#    #+#             */
-/*   Updated: 2024/09/14 22:49:45 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/09/15 21:14:56 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,25 @@ int	is_surrounded_by_walls(char **layout)
 				return (0);
 	}
 	return (1);
+}
+
+int	player_exists(char **layout)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (layout[i])
+	{
+		j = 0;
+		while (layout[i][j])
+		{
+			if (layout[i][j] == 'N' || layout[i][j] == 'W'
+				|| layout[i][j] == 'E' || layout[i][j] == 'S')
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
 }

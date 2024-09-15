@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 11:34:46 by mstaali           #+#    #+#             */
-/*   Updated: 2024/09/15 20:57:03 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/09/15 21:15:39 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,6 @@ void	get_layout(char *av)
 	check_textures(layout);
 	if (!is_surrounded_by_walls(layout + 6))
 		error_mssg(WALLS);
+	if (!player_exists(layout + 6))
+		error_mssg(PLAYER_NOT_FOUND);
 }
