@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 13:33:23 by achater           #+#    #+#             */
-/*   Updated: 2024/09/17 14:16:54 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/09/17 14:20:35 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int main(int ac, char **av)
 		printf("{rows : %d}\n", mlx->rows);
 		while (mlx->map[++i])
 			printf("%s\n", mlx->map[i]);
+
 		// mlx->block_size = 120;
 		// mlx->width = 1200;
 		// mlx->height = 1200;
