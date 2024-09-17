@@ -1,18 +1,16 @@
-
-
 #ifndef CUB_H
-#define CUB_H
-#define BUFFER_SIZE 42
+# define CUB_H
+# define BUFFER_SIZE 42
 
-#include <unistd.h>
-#include <errno.h>
-#include <stdlib.h>
-#include <math.h>
-#include <fcntl.h>
-#include <stdio.h>
-#include "./MLX42/include/MLX42/MLX42.h"
+# include <unistd.h>
+# include <errno.h>
+# include <stdlib.h>
+# include <math.h>
+# include <fcntl.h>
+# include <stdio.h>
+# include "./MLX42/include/MLX42/MLX42.h"
 
-#include "libft/libft.h"
+# include "libft/libft.h"
 
 typedef enum e_error {
 	EXTENSION,
@@ -71,5 +69,4 @@ int		is_surrounded_by_walls(char **layout);
 int		player_exists(char **layout);
 
 
-
-# endif
+#endif

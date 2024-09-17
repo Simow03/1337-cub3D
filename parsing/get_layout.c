@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 11:34:46 by mstaali           #+#    #+#             */
-/*   Updated: 2024/09/17 10:51:15 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/09/17 13:49:49 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,17 +84,43 @@ char	*read_from_file(my_mlx_t *mlx, char *av)
 	return(line);
 }
 
-void	fill_map(my_mlx_t *mlx, char **layout)
+void	map_padding(my_mlx_t *mlx, char **layout)
 {
 	int	i;
+	int	j;
+	int	len;
 
-	mlx->map = layout;
-	mlx->cols = ft_dbl_strlen(layout);
-	mlx->rows = 0;
+	mlx->map = malloc((mlx->rows + 1) * sizeof(char *));
+	if (!mlx->map)
+		return ;
 	i = -1;
-	while (layout[++i])
-		if (ft_strlen(layout[i]) > mlx->rows)
-			mlx->rows = ft_strlen(layout[i]);
+	while (++i < (int)mlx->rows)
+	{
+		mlx->map[i] = malloc(mlx->cols + 1);
+		len = ft_strlen(layout[i]);
+		ft_strlcpy(mlx->map[i], layout[i], len + 1);
+		j = len;
+		while (j < (int)mlx->cols)
+			mlx->map[i][j++] = ' ';
+		mlx->map[i][mlx->cols] = '\0';
+	}
+	mlx->map[mlx->rows] = NULL;
+}
+
+void	fill_map(my_mlx_t *mlx, char **layout)
+{
+	int		i;
+
+	mlx->rows = ft_dbl_strlen(layout);
+	mlx->cols = 0;
+	i = 0;
+	while (i < (int)mlx->rows)
+	{
+		if (ft_strlen(layout[i]) > mlx->cols)
+			mlx->cols = ft_strlen(layout[i]);
+		i++;
+	}
+	map_padding(mlx, layout);
 }
 
 void	free_textures(t_texture *texture)
