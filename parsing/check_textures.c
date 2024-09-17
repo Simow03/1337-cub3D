@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 14:58:19 by mstaali           #+#    #+#             */
-/*   Updated: 2024/09/15 23:12:22 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/09/17 10:50:41 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,10 @@ int	is_valid_texture(char *component)
 
 unsigned int	rgb_to_uint(char *component)
 {
-	char	**rgb;
-	int		i;
-	int		count;
+	int				i;
+	char			**rgb;
+	int				count;
+	unsigned int	color;
 
 	i = -1;
 	count = 0;
@@ -46,12 +47,19 @@ unsigned int	rgb_to_uint(char *component)
 		error_mssg(COLORS);
 	rgb = ft_split(component, ',');
 	if (ft_dbl_strlen(rgb) != 3)
+	{
+		ft_dbl_free(rgb);
 		error_mssg(COLORS);
+	}
 	i = -1;
 	while (rgb[++i])
 		if (ft_atoi(rgb[i]) < 0 || ft_atoi(rgb[i]) > 255)
+		{
+			ft_dbl_free(rgb);
 			error_mssg(COLORS);
-	return ((ft_atoi(rgb[0]) << 16) | (ft_atoi(rgb[1]) << 8) | ft_atoi(rgb[2]));
+		}
+	color = (ft_atoi(rgb[0]) << 16) | (ft_atoi(rgb[1]) << 8) | ft_atoi(rgb[2]);
+	return (ft_dbl_free(rgb), color);
 }
 
 void	fill_texture(t_texture *texture, char **components)
@@ -68,9 +76,10 @@ void	fill_texture(t_texture *texture, char **components)
 		texture->f_clr = rgb_to_uint(components[1]);
 	else if (!ft_strcmp(components[0], "C"))
 		texture->c_clr = rgb_to_uint(components[1]);
+	ft_dbl_free(components);
 }
 
-void	check_paths(char **path)
+void	check_paths(my_mlx_t *mlx, t_texture *texture, char **path)
 {
 	if (!ft_strcmp(path[0], "NO") || !ft_strcmp(path[0], "SO")
 		|| !ft_strcmp(path[0], "EA") || !ft_strcmp(path[0], "WE"))
@@ -79,6 +88,9 @@ void	check_paths(char **path)
 			return ;
 		else
 		{
+			free(mlx);
+			free(texture);
+			ft_dbl_free(path);
 			if (errno == ENOENT)
 				error_mssg(NOT_EXIST);
 			else if (errno == EACCES)
@@ -89,7 +101,7 @@ void	check_paths(char **path)
 	}
 }
 
-void	check_textures(char **layout)
+void	check_textures(my_mlx_t *mlx, char **layout)
 {
 	t_texture	*texture;
 	char		**components = NULL;
@@ -103,10 +115,21 @@ void	check_textures(char **layout)
 	{
 		components = ft_split_set(layout[i], "\t ");
 		if (ft_dbl_strlen(components) != 2)
+		{
+			free(mlx);
+			free(texture);
+			ft_dbl_free(components);
 			error_mssg(TEXTURE_ARG);
+		}
 		if (!is_valid_texture(components[0]))
+		{
+			free(mlx);
+			free(texture);
+			ft_dbl_free(components);
 			error_mssg(TEXTURE_ARG);
-		check_paths(components);
+		}
+		check_paths(mlx, texture, components);
 		fill_texture(texture, components);
 	}
+	mlx->texture = texture;
 }

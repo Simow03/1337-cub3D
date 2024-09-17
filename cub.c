@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 13:33:23 by achater           #+#    #+#             */
-/*   Updated: 2024/09/15 00:17:25 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/09/16 23:04:18 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,25 @@ void	check_extension(char *av)
 	error_mssg(EXTENSION);
 }
 
+void f()
+{
+	system("leaks cub3D");
+}
+
 int main(int ac, char **av)
 {
 	int i;
 	int j;
 	my_mlx_t	*mlx;
 
+	atexit(f);
 	if (ac != 2)
 		error_mssg(INVALID_INPUT);
 	else
 	{
 		check_extension(av[1]);
-		get_layout(av[1]);
 		mlx = malloc(sizeof(my_mlx_t));
+		get_layout(mlx, av[1]);
 		mlx->block_size = 120;
 		mlx->width = 1200;
 		mlx->height = 1200;

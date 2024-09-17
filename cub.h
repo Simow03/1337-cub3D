@@ -29,19 +29,6 @@ typedef enum e_error {
 	PLAYER_NOT_FOUND
 }	t_error;
 
-typedef struct my_mlx_s
-{
-	mlx_t *mlx;
-	mlx_image_t *img;
-	char **map;
-	double angle;
-	double x;
-	double y;
-	int width;
-	int height;
-	int block_size;
-} my_mlx_t;
-
 typedef struct s_texture
 {
 	char			*no;
@@ -52,6 +39,22 @@ typedef struct s_texture
 	unsigned int	c_clr;
 }	t_texture;
 
+typedef struct my_mlx_s
+{
+	mlx_t *mlx;
+	mlx_image_t *img;
+	char **map;
+	double angle;
+	double x;
+	double y;
+	int width;
+	int height;
+	unsigned int cols;
+	unsigned int rows;
+	int block_size;
+	t_texture *texture;
+} my_mlx_t;
+
 void	main_fct(my_mlx_t *mlx);
 void hook_fct(void *param);
 void	draw_mlx(my_mlx_t *mlx);
@@ -61,9 +64,9 @@ void	normalize_angle(double *angle);
 
 
 void	error_mssg(int flag);
-void	get_layout(char *av);
+void	get_layout(my_mlx_t *mlx, char *av);
 char	*get_next_line(int fd);
-void	check_textures(char **layout);
+void	check_textures(my_mlx_t *mlx, char **layout);
 int		is_surrounded_by_walls(char **layout);
 int		player_exists(char **layout);
 
