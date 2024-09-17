@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 11:34:46 by mstaali           #+#    #+#             */
-/*   Updated: 2024/09/17 13:49:49 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/09/17 15:41:00 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ void	map_padding(my_mlx_t *mlx, char **layout)
 		ft_strlcpy(mlx->map[i], layout[i], len + 1);
 		j = len;
 		while (j < (int)mlx->cols)
-			mlx->map[i][j++] = ' ';
+			mlx->map[i][j++] = '0';
 		mlx->map[i][mlx->cols] = '\0';
 	}
 	mlx->map[mlx->rows] = NULL;
