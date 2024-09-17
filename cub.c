@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 13:33:23 by achater           #+#    #+#             */
-/*   Updated: 2024/09/17 13:50:04 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/09/17 14:16:54 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,10 @@ int main(int ac, char **av)
 		mlx = malloc(sizeof(my_mlx_t));
 		get_layout(mlx, av[1]);
 		i = -1;
+		printf("{cols : %d}\n", mlx->cols);
+		printf("{rows : %d}\n", mlx->rows);
+		while (mlx->map[++i])
+			printf("%s\n", mlx->map[i]);
 		// mlx->block_size = 120;
 		// mlx->width = 1200;
 		// mlx->height = 1200;
