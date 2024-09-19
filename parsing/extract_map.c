@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 23:02:44 by mstaali           #+#    #+#             */
-/*   Updated: 2024/09/15 21:14:56 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/09/19 22:20:02 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,33 @@ int	is_surrounded_by_walls(char **layout)
 		if ((layout[y][x] != '1' && layout[y][x] != ' ' && layout[y][x] != '\t')
 			|| (layout[y][len - 1] != '1' && layout[y][len - 1] != ' ' && layout[y][len - 1] != '\t'))
 				return (0);
+	}
+	return (1);
+}
+
+int check_zero_adjacent(char **layout)
+{
+	size_t	i;
+	size_t	j;
+
+	i = 0;
+	while (layout[i])
+	{
+		j = 0;
+		while (layout[i][j])
+		{
+			if (layout[i][j] == '0')
+			{
+				if ((j > 0 && !ft_strchr("01NSWE", layout[i][j - 1])) ||
+				(layout[i][j + 1] && !ft_strchr("01NSWE", layout[i][j + 1])) ||
+					(j == ft_strlen(layout[i]) - 1) ||
+					(i > 0 && (j >= ft_strlen(layout[i-1]) || !ft_strchr("01NSWE", layout[i - 1][j]))) ||
+					(layout[i + 1] && (j >= ft_strlen(layout[i+1]) || !ft_strchr("01NSWE", layout[i + 1][j]))))
+						return (0);
+			}
+			j++;
+        }
+		i++;
 	}
 	return (1);
 }

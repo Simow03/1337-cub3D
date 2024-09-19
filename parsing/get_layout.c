@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 11:34:46 by mstaali           #+#    #+#             */
-/*   Updated: 2024/09/17 15:41:00 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/09/19 22:20:27 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ void	map_padding(my_mlx_t *mlx, char **layout)
 		ft_strlcpy(mlx->map[i], layout[i], len + 1);
 		j = len;
 		while (j < (int)mlx->cols)
-			mlx->map[i][j++] = '0';
+			mlx->map[i][j++] = '5';
 		mlx->map[i][mlx->cols] = '\0';
 	}
 	mlx->map[mlx->rows] = NULL;
@@ -144,14 +144,20 @@ void	get_layout(my_mlx_t *mlx, char *av)
 	check_textures(mlx, layout);
 	if (!is_surrounded_by_walls(layout + 6))
 	{
-		free(mlx);
 		free_textures(mlx->texture);
+		free(mlx);
 		error_mssg(WALLS);
+	}
+	if (!check_zero_adjacent(layout + 6))
+	{
+		free_textures(mlx->texture);
+		free(mlx);
+		error_mssg(ZERO_ADJ);
 	}
 	if (!player_exists(layout + 6))
 	{
-		free(mlx);
 		free_textures(mlx->texture);
+		free(mlx);
 		error_mssg(PLAYER_NOT_FOUND);
 	}
 	fill_map(mlx, layout + 6);

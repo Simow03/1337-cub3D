@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
+/*   By: achater <achater@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 13:33:23 by achater           #+#    #+#             */
-/*   Updated: 2024/09/17 14:20:35 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/09/18 14:34:16 by achater          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ void f()
 
 int main(int ac, char **av)
 {
-	int i;
-	// int j;
+	unsigned int i;
+	unsigned int j;
 	my_mlx_t	*mlx;
 
 	// atexit(f);
@@ -48,12 +48,17 @@ int main(int ac, char **av)
 		i = -1;
 		printf("{cols : %d}\n", mlx->cols);
 		printf("{rows : %d}\n", mlx->rows);
-		while (mlx->map[++i])
-			printf("%s\n", mlx->map[i]);
+		while (++i < mlx->rows)
+		{
+			j = -1;
+			while (++j < mlx->cols)
+				printf("%c", mlx->map[i][j]);
+			printf("\n");
+		}
 
-		// mlx->block_size = 120;
-		// mlx->width = 1200;
-		// mlx->height = 1200;
+		mlx->block_size = 80;
+		mlx->width = 1200;
+		mlx->height = 1200;
 		// mlx->map = malloc(sizeof(char *) * (mlx->height / mlx->block_size));
 		// i = 0;
 		// while (i < mlx->height / mlx->block_size)
@@ -78,7 +83,7 @@ int main(int ac, char **av)
 		// mlx->map[6][5] = '1';
 
 
-		// main_fct(mlx);
+		main_fct(mlx);
 		// return (0);
 	}
 }
