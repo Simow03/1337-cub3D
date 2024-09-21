@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 21:04:50 by mstaali           #+#    #+#             */
-/*   Updated: 2024/09/17 14:14:29 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/09/21 18:32:30 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,6 @@ void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 void	ft_dbl_free(char **str);
+long long	ft_atol(const char *str);
 
 #endif
