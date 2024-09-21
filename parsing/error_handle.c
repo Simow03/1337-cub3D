@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 14:52:06 by mstaali           #+#    #+#             */
-/*   Updated: 2024/09/19 21:38:45 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/09/21 16:10:31 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	error_mssg(int flag)
 		ft_putstr_fd("Unrecognized map character\n\n", STDERR_FILENO);
 	if (flag == TEXTURE_ARG)
 		ft_putstr_fd("Invalid texture arguments\n\n", STDERR_FILENO);
+	if (flag == NO_MAP)
+		ft_putstr_fd("Map not found!\n\n", STDERR_FILENO);
 	if (flag == NOT_EXIST)
 		ft_putstr_fd("Texture file does not exist\n\n", STDERR_FILENO);
 	if (flag == PERMISSION)
@@ -37,8 +39,8 @@ void	error_mssg(int flag)
 		ft_putstr_fd("Invalid color pattern\n\n", STDERR_FILENO);
 	if (flag == WALLS)
 		ft_putstr_fd("Map is not surrounded by walls\n\n", STDERR_FILENO);
-	if (flag == PLAYER_NOT_FOUND)
-		ft_putstr_fd("Player not found in map\n\n", STDERR_FILENO);
+	if (flag == PLAYER_ERR)
+		ft_putstr_fd("One player requested\n\n", STDERR_FILENO);
 	if (flag == ZERO_ADJ)
 		ft_putstr_fd("Zero is adjacent to an invalid character.\n\n", STDERR_FILENO);
 	exit(EXIT_FAILURE);

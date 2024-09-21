@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 23:02:44 by mstaali           #+#    #+#             */
-/*   Updated: 2024/09/19 22:20:02 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/09/21 16:12:05 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,19 +72,26 @@ int	player_exists(char **layout)
 {
 	int	i;
 	int	j;
+	int	found;
 
 	i = 0;
+	found = 0;
 	while (layout[i])
 	{
 		j = 0;
 		while (layout[i][j])
 		{
-			if (layout[i][j] == 'N' || layout[i][j] == 'W'
-				|| layout[i][j] == 'E' || layout[i][j] == 'S')
-				return (1);
+			if ((layout[i][j] == 'N' || layout[i][j] == 'W'
+				|| layout[i][j] == 'E' || layout[i][j] == 'S') && found == 1)
+				return (0);
+			else if ((layout[i][j] == 'N' || layout[i][j] == 'W'
+				|| layout[i][j] == 'E' || layout[i][j] == 'S') && found == 0)
+				found = 1;
 			j++;
 		}
 		i++;
 	}
-	return (0);
+	if (found == 0)
+		return (0);
+	return (1);
 }

@@ -17,6 +17,7 @@ typedef enum e_error {
 	INVALID_INPUT,
 	MAP_CHAR,
 	EMPTY_FILE,
+	NO_MAP,
 	NEWLINE_MAP,
 	TEXTURE_ARG,
 	NOT_EXIST,
@@ -24,7 +25,7 @@ typedef enum e_error {
 	CHECK_FILE,
 	COLORS,
 	WALLS,
-	PLAYER_NOT_FOUND,
+	PLAYER_ERR,
 	ZERO_ADJ
 }	t_error;
 
