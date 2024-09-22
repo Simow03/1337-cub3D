@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 14:58:19 by mstaali           #+#    #+#             */
-/*   Updated: 2024/09/21 18:33:48 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/09/22 22:03:02 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,23 @@ unsigned int	rgb_to_uint(char *component)
 	}
 	i = -1;
 	while (rgb[++i])
-		if (ft_atol(rgb[i]) < 0 || ft_atol(rgb[i]) > 255)
+	{
+		if (ft_strlen(rgb[i]) > 3)
 		{
 			ft_dbl_free(rgb);
 			error_mssg(COLORS);
 		}
+		if (ft_strchr(rgb[i], '.'))
+		{
+			ft_dbl_free(rgb);
+			error_mssg(COLORS);
+		}
+		if (ft_atoi(rgb[i]) < 0 || ft_atoi(rgb[i]) > 255)
+		{
+			ft_dbl_free(rgb);
+			error_mssg(COLORS);
+		}
+	}
 	color = (ft_atoi(rgb[0]) << 16) | (ft_atoi(rgb[1]) << 8) | ft_atoi(rgb[2]);
 	return (ft_dbl_free(rgb), color);
 }
