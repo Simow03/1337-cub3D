@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: achater <achater@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 11:08:58 by achater           #+#    #+#             */
-/*   Updated: 2024/09/18 18:56:03 by achater          ###   ########.fr       */
+/*   Updated: 2024/09/23 22:42:39 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void initiate_angle_pos(my_mlx_t *mlx)
 
 int32_t ft_pixel(int32_t r, int32_t g, int32_t b, int32_t a)
 {
-    return (r << 24 | g << 16 | b << 8 | a);
+	return (r << 24 | g << 16 | b << 8 | a);
 }
 
 void color_the_block(mlx_image_t *img,int i, int j, int width, int height, int color)
@@ -118,8 +118,8 @@ void draw_mlx(my_mlx_t *mlx)
 
 void	main_fct(my_mlx_t *mlx)
 {
-	mlx->mlx = mlx_init(mlx->height, mlx->width,"cub3d", 0);
-	mlx->img = mlx_new_image(mlx->mlx, mlx->height, mlx->width);
+	mlx->mlx = mlx_init(mlx->width, mlx->height,"cub3d", 0);
+	mlx->img = mlx_new_image(mlx->mlx, mlx->width, mlx->height);
 	initiate_angle_pos(mlx);
 	draw_mlx(mlx);
 	mlx_loop_hook(mlx->mlx, hook_fct, mlx);

@@ -1,7 +1,8 @@
 {
-	"files.associations": {
-		"memory.h": "c",
-		"stdlib.h": "c",
-		"locale": "cpp"
-	}
+  "files.associations": {
+    "memory.h": "c",
+    "stdlib.h": "c",
+    "locale": "cpp",
+    "iterator": "c"
+  }
 }

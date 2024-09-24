@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 14:58:19 by mstaali           #+#    #+#             */
-/*   Updated: 2024/09/22 22:03:02 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/09/23 22:47:11 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ int	is_valid_texture(char *component)
 	return (0);
 }
 
-unsigned int	rgb_to_uint(char *component)
+uint32_t	rgb_to_uint(char *component)
 {
 	int				i;
 	char			**rgb;
 	int				count;
-	unsigned int	color;
+	uint32_t		color;
 
 	i = -1;
 	count = 0;
@@ -71,7 +71,8 @@ unsigned int	rgb_to_uint(char *component)
 		}
 	}
 	color = (ft_atoi(rgb[0]) << 16) | (ft_atoi(rgb[1]) << 8) | ft_atoi(rgb[2]);
-	return (ft_dbl_free(rgb), color);
+	ft_dbl_free(rgb);
+	return (color);
 }
 
 void	fill_texture(t_texture *texture, char **components)
