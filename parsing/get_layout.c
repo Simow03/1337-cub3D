@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_layout.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
+/*   By: achater <achater@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 11:34:46 by mstaali           #+#    #+#             */
-/*   Updated: 2024/09/21 16:10:14 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/09/17 17:36:37 by achater          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,29 +142,17 @@ void	get_layout(my_mlx_t *mlx, char *av)
 	layout = ft_split(line, '\n');
 	free(line);
 	check_textures(mlx, layout);
-	if (!*(layout + 6))
-	{
-		free_textures(mlx->texture);
-		free(mlx);
-		error_mssg(NO_MAP);
-	}
 	if (!is_surrounded_by_walls(layout + 6))
 	{
 		free_textures(mlx->texture);
 		free(mlx);
 		error_mssg(WALLS);
 	}
-	if (!check_zero_adjacent(layout + 6))
-	{
-		free_textures(mlx->texture);
-		free(mlx);
-		error_mssg(ZERO_ADJ);
-	}
 	if (!player_exists(layout + 6))
 	{
-		free_textures(mlx->texture);
 		free(mlx);
-		error_mssg(PLAYER_ERR);
+		free_textures(mlx->texture);
+		error_mssg(PLAYER_NOT_FOUND);
 	}
 	fill_map(mlx, layout + 6);
 }

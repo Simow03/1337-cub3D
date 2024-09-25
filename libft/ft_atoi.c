@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 01:24:22 by mstaali           #+#    #+#             */
-/*   Updated: 2024/09/21 18:28:52 by mstaali          ###   ########.fr       */
+/*   Updated: 2023/11/11 16:10:07 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ static int	ft_iswhitespace(int c)
 
 int	ft_atoi(const char *str)
 {
-	int			i;
-	int			sign;
-	long long	result;
+	int	i;
+	int	sign;
+	int	result;
 
 	i = 0;
 	sign = 1;

@@ -17,7 +17,6 @@ typedef enum e_error {
 	INVALID_INPUT,
 	MAP_CHAR,
 	EMPTY_FILE,
-	NO_MAP,
 	NEWLINE_MAP,
 	TEXTURE_ARG,
 	NOT_EXIST,
@@ -25,18 +24,17 @@ typedef enum e_error {
 	CHECK_FILE,
 	COLORS,
 	WALLS,
-	PLAYER_ERR,
-	ZERO_ADJ
+	PLAYER_NOT_FOUND
 }	t_error;
 
 typedef struct s_texture
 {
-	char		*no;
-	char		*so;
-	char		*we;
-	char		*ea;
-	uint32_t	f_clr;
-	uint32_t	c_clr;
+	char			*no;
+	char			*so;
+	char			*we;
+	char			*ea;
+	unsigned int	f_clr;
+	unsigned int	c_clr;
 }	t_texture;
 
 typedef struct my_mlx_s
@@ -52,7 +50,13 @@ typedef struct my_mlx_s
 	unsigned int cols;
 	unsigned int rows;
 	int block_size;
-	t_texture *texture;
+	int	is_vertical;
+	char		*curr_texture;
+	double		text_coord_x;
+	double		text_coord_y;
+	uint32_t	text_pixel_clr;
+	t_texture	*texture;
+	int	hidden;
 } my_mlx_t;
 
 void	main_fct(my_mlx_t *mlx);
@@ -61,6 +65,9 @@ void	draw_mlx(my_mlx_t *mlx);
 void	ray_casting(my_mlx_t *mlx);
 int32_t ft_pixel(int32_t r, int32_t g, int32_t b, int32_t a);
 void	normalize_angle(double *angle);
+void draw_player(my_mlx_t *mlx,int x, int y, int radius, int color);
+void	draw_mini_map(my_mlx_t *mlx);
+void color_the_block(mlx_image_t *img,int i, int j, int width, int height, int color);
 
 
 void	error_mssg(int flag);
@@ -69,6 +76,6 @@ char	*get_next_line(int fd);
 void	check_textures(my_mlx_t *mlx, char **layout);
 int		is_surrounded_by_walls(char **layout);
 int		player_exists(char **layout);
-int		check_zero_adjacent(char **layout);
+
 
 #endif

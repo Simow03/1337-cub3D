@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 11:48:43 by achater           #+#    #+#             */
-/*   Updated: 2024/09/23 23:07:33 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/09/25 21:02:24 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,10 +169,11 @@ void	ray_casting(my_mlx_t *mlx)
 		double wall_start = (mlx->width / 2) - (wall_height / 2);
 		double wall_end = wall_start + wall_height;
 		double y = wall_start - 1;
+		// get_which_texture_side(mlx);
 		int x = 0;
 		while(x < wall_start)
 		{
-		    mlx_put_pixel(mlx->img, screen_x, x, mlx->texture->c_clr);
+			mlx_put_pixel(mlx->img, screen_x, x, mlx->texture->c_clr);
 		    x++;
 		}
 		while (++y < wall_end)
@@ -180,7 +181,7 @@ void	ray_casting(my_mlx_t *mlx)
 				mlx_put_pixel(mlx->img, screen_x, y, ft_pixel(40, 35, 10, 127));
 		while(y < mlx->width)
 		{
-		    mlx_put_pixel(mlx->img, screen_x, y, mlx->texture->f_clr);
+			mlx_put_pixel(mlx->img, screen_x, y, mlx->texture->f_clr);
 		    y++;
 		}
 		a += step;

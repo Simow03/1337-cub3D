@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 14:58:19 by mstaali           #+#    #+#             */
-/*   Updated: 2024/09/23 22:47:11 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/09/17 10:50:41 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ int	is_valid_texture(char *component)
 	return (0);
 }
 
-uint32_t	rgb_to_uint(char *component)
+unsigned int	rgb_to_uint(char *component)
 {
 	int				i;
 	char			**rgb;
 	int				count;
-	uint32_t		color;
+	unsigned int	color;
 
 	i = -1;
 	count = 0;
@@ -53,26 +53,13 @@ uint32_t	rgb_to_uint(char *component)
 	}
 	i = -1;
 	while (rgb[++i])
-	{
-		if (ft_strlen(rgb[i]) > 3)
-		{
-			ft_dbl_free(rgb);
-			error_mssg(COLORS);
-		}
-		if (ft_strchr(rgb[i], '.'))
-		{
-			ft_dbl_free(rgb);
-			error_mssg(COLORS);
-		}
 		if (ft_atoi(rgb[i]) < 0 || ft_atoi(rgb[i]) > 255)
 		{
 			ft_dbl_free(rgb);
 			error_mssg(COLORS);
 		}
-	}
 	color = (ft_atoi(rgb[0]) << 16) | (ft_atoi(rgb[1]) << 8) | ft_atoi(rgb[2]);
-	ft_dbl_free(rgb);
-	return (color);
+	return (ft_dbl_free(rgb), color);
 }
 
 void	fill_texture(t_texture *texture, char **components)
