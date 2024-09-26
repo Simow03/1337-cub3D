@@ -1,6 +1,8 @@
 #ifndef CUB_H
 # define CUB_H
 # define BUFFER_SIZE 42
+# define TEXTURE_WIDTH 160
+# define TEXTURE_HEIGHT 160
 
 # include <unistd.h>
 # include <errno.h>
@@ -35,6 +37,10 @@ typedef struct s_texture
 	char			*ea;
 	unsigned int	f_clr;
 	unsigned int	c_clr;
+	mlx_texture_t	*no_tex;
+	mlx_texture_t	*so_tex;
+	mlx_texture_t	*we_tex;
+	mlx_texture_t	*ea_tex;
 }	t_texture;
 
 typedef struct my_mlx_s
@@ -51,11 +57,12 @@ typedef struct my_mlx_s
 	unsigned int rows;
 	int block_size;
 	int	is_vertical;
-	char		*curr_texture;
-	double		text_coord_x;
-	double		text_coord_y;
-	uint32_t	text_pixel_clr;
-	t_texture	*texture;
+	mlx_texture_t	*curr_texture;
+	double			text_coord_x;
+	double			text_coord_y;
+	double			wall_inter;
+	uint32_t		text_pixel_clr;
+	t_texture		*texture;
 	int	hidden;
 } my_mlx_t;
 
@@ -76,6 +83,9 @@ char	*get_next_line(int fd);
 void	check_textures(my_mlx_t *mlx, char **layout);
 int		is_surrounded_by_walls(char **layout);
 int		player_exists(char **layout);
-
+void	get_which_texture_side(my_mlx_t *mlx);
+uint32_t	get_texture_color(mlx_texture_t *texture, int x, int y);
+double		get_text_x(my_mlx_t *mlx, double wall_inter);
+double		get_tex_y(my_mlx_t *mlx, double y, double wall_height);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 11:48:43 by achater           #+#    #+#             */
-/*   Updated: 2024/09/25 21:02:24 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/09/26 01:33:31 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,6 @@ double	vertical_distance(my_mlx_t *mlx, double Px, double Py, double a)
 
 void	ray_casting(my_mlx_t *mlx)
 {
-	// normalize_angle(&mlx->angle);
 	double	fov = 60;
 	double	start_angle = mlx->angle - (fov / 2);
 	double	step = (double)fov / mlx->width;
@@ -138,47 +137,36 @@ void	ray_casting(my_mlx_t *mlx)
 		v_distance = vertical_distance(mlx, Px, Py, a);
 		distance = fmin(h_distance, v_distance);
 		correct_distance = distance * cos((a - mlx->angle) * M_PI / 180);
-
-    // Bresenham's line algorithm to draw the line from (start_x, start_y) to (end_x, end_y)
-    	// double x_increment, y_increment;
-    	// double x, y;
-    	// double delta_x, delta_y;
-    	// int steps, i;
-
-    	// delta_x = distance * cos(a * M_PI / 180);
-    	// delta_y = distance * sin(a * M_PI / 180);
-    	// steps = (int)fmax(fabs(delta_x), fabs(delta_y));
-    	// x_increment = delta_x / steps;
-    	// y_increment = delta_y / steps;
-    	// x = Px;
-    	// y = Py;
-    	// i = 0;
-    	// while (i <= steps)
-    	// {
-    	//     if (x >= 0 && x < mlx->width && y >= 0 && y < mlx->height)
-    	//         mlx_put_pixel(mlx->img, round(x), round(y), ft_pixel(255, 0, 0, 255));
-    	//     else
-    	//         break;
-    	//     x += x_increment;
-    	//     y += y_increment;
-    	//     i++;
-    	// }
-		// wall randering
-
 		double wall_height = (mlx->width / correct_distance) * mlx->block_size;
 		double wall_start = (mlx->width / 2) - (wall_height / 2);
 		double wall_end = wall_start + wall_height;
 		double y = wall_start - 1;
-		// get_which_texture_side(mlx);
+		//! ==== TEXTURE MAPPING ===== !//
+		int			tex_x;
+		int			tex_y;
+		uint32_t	pixel_color;
+
+		if (distance == v_distance)
+			mlx->is_vertical = 1;
+		else
+			mlx->is_vertical = 0;
+		get_which_texture_side(mlx);
+		//wall inter == y_ray if wall in vertical slice
+		//wall inter == x_ray if wall in horizontal slice
+		tex_x = get_text_x(mlx, mlx->wall_inter);
 		int x = 0;
 		while(x < wall_start)
 		{
 			mlx_put_pixel(mlx->img, screen_x, x, mlx->texture->c_clr);
-		    x++;
+			x++;
 		}
 		while (++y < wall_end)
+		{
+			tex_y = get_tex_y(mlx, y, wall_height);
+			pixel_color = get_texture_color(mlx->curr_texture, tex_x, tex_y);
 			if (y >= 0 && y < mlx->width)
-				mlx_put_pixel(mlx->img, screen_x, y, ft_pixel(40, 35, 10, 127));
+				mlx_put_pixel(mlx->img, screen_x, y, pixel_color);
+		}
 		while(y < mlx->width)
 		{
 			mlx_put_pixel(mlx->img, screen_x, y, mlx->texture->f_clr);
