@@ -58,34 +58,38 @@ typedef struct my_mlx_s
 	int block_size;
 	int	is_vertical;
 	mlx_texture_t	*curr_texture;
-	double			text_coord_x;
-	double			text_coord_y;
+	double x_h;
+	double y_h;
+	double x_v;
+	double y_v;
+	double			wall_inter_x;
+	double			wall_inter_y;
 	double			wall_inter;
-	uint32_t		text_pixel_clr;
 	t_texture		*texture;
 	int	hidden;
 } my_mlx_t;
 
-void	main_fct(my_mlx_t *mlx);
-void hook_fct(void *param);
-void	draw_mlx(my_mlx_t *mlx);
-void	ray_casting(my_mlx_t *mlx);
-int32_t ft_pixel(int32_t r, int32_t g, int32_t b, int32_t a);
-void	normalize_angle(double *angle);
-void draw_player(my_mlx_t *mlx,int x, int y, int radius, int color);
-void	draw_mini_map(my_mlx_t *mlx);
-void color_the_block(mlx_image_t *img,int i, int j, int width, int height, int color);
+void			main_fct(my_mlx_t *mlx);
+void 			hook_fct(void *param);
+void			draw_mlx(my_mlx_t *mlx);
+void			ray_casting(my_mlx_t *mlx);
+int32_t 		ft_pixel(int32_t r, int32_t g, int32_t b, int32_t a);
+void			normalize_angle(double *angle);
+void 			draw_player(my_mlx_t *mlx,int x, int y, int radius, int color);
+void			draw_mini_map(my_mlx_t *mlx);
+void 			color_the_block(mlx_image_t *img,int i, int j, int width, int height, int color);
 
 
-void	error_mssg(int flag);
-void	get_layout(my_mlx_t *mlx, char *av);
-char	*get_next_line(int fd);
-void	check_textures(my_mlx_t *mlx, char **layout);
-int		is_surrounded_by_walls(char **layout);
-int		player_exists(char **layout);
-void	get_which_texture_side(my_mlx_t *mlx);
-uint32_t	get_texture_color(mlx_texture_t *texture, int x, int y);
-double		get_text_x(my_mlx_t *mlx, double wall_inter);
-double		get_tex_y(my_mlx_t *mlx, double y, double wall_height);
+void			error_mssg(int flag);
+void			get_layout(my_mlx_t *mlx, char *av);
+char			*get_next_line(int fd);
+void			check_textures(my_mlx_t *mlx, char **layout);
+int				is_surrounded_by_walls(char **layout);
+int				player_exists(char **layout);
+void			get_which_texture_side(my_mlx_t *mlx, double ray_x, double ray_y);
+unsigned int	get_texture_color(mlx_texture_t *tex, unsigned int x, unsigned int y);
+void			adjust_color(mlx_image_t *image, unsigned int x, unsigned int y, unsigned int c);
+double			get_text_x(my_mlx_t *mlx, double wall_inter);
+double			get_tex_y(my_mlx_t *mlx, double y, double wall_height);
 
 #endif

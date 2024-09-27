@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 11:48:43 by achater           #+#    #+#             */
-/*   Updated: 2024/09/26 01:33:31 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/09/27 17:10:06 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ double	horizontal_distance(my_mlx_t *mlx, double Px, double Py, double a)
 		y_ray += ystep;
 	}
 	h_distance = sqrt(pow(x_ray - mlx->x, 2) + pow(y_ray - mlx->y, 2));
+	mlx->x_h = x_ray;
+	mlx->y_h = y_ray;
 	return (h_distance);
 }
 
@@ -110,6 +112,8 @@ double	vertical_distance(my_mlx_t *mlx, double Px, double Py, double a)
 		y_ray += ystep;
 	}
 	v_distance = sqrt(pow(x_ray - mlx->x, 2) + pow(y_ray - mlx->y, 2));
+	mlx->x_v = x_ray;
+	mlx->y_v = y_ray;
 	return (v_distance);
 }
 
@@ -135,24 +139,33 @@ void	ray_casting(my_mlx_t *mlx)
 		normalize_angle(&a);
 		h_distance = horizontal_distance(mlx, Px, Py, a);
 		v_distance = vertical_distance(mlx, Px, Py, a);
-		distance = fmin(h_distance, v_distance);
+		if (h_distance < v_distance)
+		{
+			distance = h_distance;
+			mlx->wall_inter = mlx->x_h;
+			mlx->wall_inter_x = mlx->x_h;
+			mlx->wall_inter_y = mlx->y_h;
+			mlx->is_vertical = 0;
+		}
+		else
+		{
+			distance = v_distance;
+			mlx->wall_inter = mlx->y_v;
+			mlx->wall_inter_x = mlx->x_v;
+			mlx->wall_inter_y = mlx->y_v;
+			mlx->is_vertical = 1;
+		}
 		correct_distance = distance * cos((a - mlx->angle) * M_PI / 180);
 		double wall_height = (mlx->width / correct_distance) * mlx->block_size;
 		double wall_start = (mlx->width / 2) - (wall_height / 2);
 		double wall_end = wall_start + wall_height;
 		double y = wall_start - 1;
 		//! ==== TEXTURE MAPPING ===== !//
-		int			tex_x;
-		int			tex_y;
-		uint32_t	pixel_color;
+		int				tex_x;
+		int				tex_y;
+		unsigned int	pixel_color;
 
-		if (distance == v_distance)
-			mlx->is_vertical = 1;
-		else
-			mlx->is_vertical = 0;
-		get_which_texture_side(mlx);
-		//wall inter == y_ray if wall in vertical slice
-		//wall inter == x_ray if wall in horizontal slice
+		get_which_texture_side(mlx, mlx->wall_inter_x, mlx->wall_inter_y);
 		tex_x = get_text_x(mlx, mlx->wall_inter);
 		int x = 0;
 		while(x < wall_start)
@@ -163,9 +176,9 @@ void	ray_casting(my_mlx_t *mlx)
 		while (++y < wall_end)
 		{
 			tex_y = get_tex_y(mlx, y, wall_height);
-			pixel_color = get_texture_color(mlx->curr_texture, tex_x, tex_y);
+			pixel_color = get_texture_color(mlx->curr_texture , tex_x, tex_y);
 			if (y >= 0 && y < mlx->width)
-				mlx_put_pixel(mlx->img, screen_x, y, pixel_color);
+				adjust_color(mlx->img, screen_x, y, pixel_color);
 		}
 		while(y < mlx->width)
 		{
