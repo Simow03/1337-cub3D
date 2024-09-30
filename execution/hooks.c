@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
+/*   By: achater <achater@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 12:18:53 by achater           #+#    #+#             */
-/*   Updated: 2024/09/27 18:49:38 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/09/29 16:20:27 by achater          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void move(my_mlx_t *mlx, double angle)
 	int i;
 	int j;
 
-	x = mlx->x + 10.0 * cos((mlx->angle + angle) * M_PI / 180);
-	y = mlx->y + 10.0 * sin((mlx->angle + angle) * M_PI / 180);
+	x = mlx->x + 5.0 * cos((mlx->angle + angle) * M_PI / 180);
+	y = mlx->y + 5.0 * sin((mlx->angle + angle) * M_PI / 180);
 	j = (int)(x / mlx->block_size);
 	i = (int)(y / mlx->block_size);
 	if (mlx->map[i][j] != '1' &&
@@ -41,7 +41,14 @@ void move(my_mlx_t *mlx, double angle)
 		&& mlx->map[(int)(y+ 10)/mlx->block_size][(int)(x)/mlx->block_size] != '1'
 		&& mlx->map[(int)(y- 10)/mlx->block_size][(int)(x- 10)/mlx->block_size] != '1'
 		&& mlx->map[(int)(y)/mlx->block_size][(int)(x- 10)/mlx->block_size] != '1'
-		&& mlx->map[(int)(y- 10)/mlx->block_size][(int)(x)/mlx->block_size] != '1')
+		&& mlx->map[(int)(y- 10)/mlx->block_size][(int)(x)/mlx->block_size] != '1'
+		&& mlx->map[i][j] != 'C')
+		// && mlx->map[(int)(y+ 10) / mlx->block_size][(int)(x+ 10)/ mlx->block_size] != 'C'
+		// && mlx->map[(int)(y)/mlx->block_size][(int)(x+ 10)/mlx->block_size] != 'C'
+		// && mlx->map[(int)(y+ 10)/mlx->block_size][(int)(x)/mlx->block_size] != 'C'
+		// && mlx->map[(int)(y- 10)/mlx->block_size][(int)(x- 10)/mlx->block_size] != 'C'
+		// && mlx->map[(int)(y)/mlx->block_size][(int)(x- 10)/mlx->block_size] != 'C'
+		// && mlx->map[(int)(y- 10)/mlx->block_size][(int)(x)/mlx->block_size] != 'C')
 	{
 		mlx->x = x;
 		mlx->y = y;
@@ -66,6 +73,8 @@ void	key_fct(struct mlx_key_data key, void *param)
 			mlx->hidden = 0;
 		}
 	}
+	if (key.key == MLX_KEY_SPACE && key.action == MLX_RELEASE)
+		open_close_door(mlx);
 }
 
 void mouse_hook(my_mlx_t *mlx)
@@ -76,26 +85,13 @@ void mouse_hook(my_mlx_t *mlx)
 	mlx_get_mouse_pos(mlx->mlx, &x, &y);
 	if (mlx->hidden)
 	{
-		mlx_set_mouse_pos(mlx->mlx, mlx->height / 2, mlx->width / 2);
+		mlx_set_mouse_pos(mlx->mlx, mlx->width / 2, mlx->height / 2);
 		if (x < 0 || x > mlx->width)
 			return ;
 		mlx->angle -= (mlx->width / 2 - x) * 180 / mlx->width / 3;
 		normalize_angle(&mlx->angle);
 	}
 	mlx_key_hook(mlx->mlx, key_fct, mlx);
-	// if (mlx_is_key_down(mlx->mlx, MLX_KEY_P))
-	// {
-	// 	if (mlx->hidden == 0)
-	// 	{
-	// 		mlx_set_cursor_mode(mlx->mlx, MLX_MOUSE_HIDDEN);
-	// 		mlx->hidden = 1;
-	// 	}
-	// 	else
-	// 	{
-	// 		mlx_set_cursor_mode(mlx->mlx, MLX_MOUSE_NORMAL);
-	// 		mlx->hidden = 0;
-	// 	}
-	// }
 }
 
 void hook_fct(void *param)
@@ -120,6 +116,7 @@ void hook_fct(void *param)
 		move(mlx, 270);
 	if (mlx_is_key_down(mlx->mlx, 68))
 		move(mlx, 90);
+	mlx_key_hook(mlx->mlx, key_fct, mlx);
 	mlx_delete_image(mlx->mlx, mlx->img);
 	mlx->img = mlx_new_image(mlx->mlx, mlx->width, mlx->height);
 	draw_mlx(mlx);

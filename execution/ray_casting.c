@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
+/*   By: achater <achater@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 11:48:43 by achater           #+#    #+#             */
-/*   Updated: 2024/09/27 18:47:24 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/09/28 11:32:34 by achater          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,8 +156,8 @@ void	ray_casting(my_mlx_t *mlx)
 			mlx->is_vertical = 1;
 		}
 		correct_distance = distance * cos((a - mlx->angle) * M_PI / 180);
-		double wall_height = (mlx->width / correct_distance) * mlx->block_size;
-		double wall_start = (mlx->width / 2) - (wall_height / 2);
+		double wall_height = (mlx->height / correct_distance) * mlx->block_size;
+		double wall_start = (mlx->height / 2) - (wall_height / 2);
 		double wall_end = wall_start + wall_height;
 		double y = wall_start - 1;
 		//! ==== TEXTURE MAPPING ===== !//
@@ -177,10 +177,10 @@ void	ray_casting(my_mlx_t *mlx)
 		{
 			tex_y = get_tex_y(mlx, y, wall_height);
 			pixel_color = get_texture_color(mlx->curr_texture , tex_x, tex_y);
-			if (y >= 0 && y < mlx->width)
+			if (y >= 0 && y < mlx->height)
 				adjust_color(mlx->img, screen_x, y, pixel_color);
 		}
-		while(y < mlx->width)
+		while(y < mlx->height)
 		{
 			mlx_put_pixel(mlx->img, screen_x, y, mlx->texture->f_clr);
 		    y++;

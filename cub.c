@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
+/*   By: achater <achater@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 13:33:23 by achater           #+#    #+#             */
-/*   Updated: 2024/09/27 18:25:27 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/09/29 11:54:42 by achater          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ int main(int ac, char **av)
 		}
 
 		mlx->block_size = 80;
-		mlx->width = 1500;
-		mlx->height = 1500;
+		mlx->width = 1280;
+		mlx->height = 720;
 		main_fct(mlx);
 		// return (0);
 	}
