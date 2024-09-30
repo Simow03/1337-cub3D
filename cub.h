@@ -26,7 +26,8 @@ typedef enum e_error {
 	CHECK_FILE,
 	COLORS,
 	WALLS,
-	PLAYER_NOT_FOUND
+	PLAYER_NOT_FOUND,
+	DOORS
 }	t_error;
 
 typedef struct s_texture
@@ -35,12 +36,14 @@ typedef struct s_texture
 	char			*so;
 	char			*we;
 	char			*ea;
+	char			*door;
 	unsigned int	f_clr;
 	unsigned int	c_clr;
 	mlx_texture_t	*no_tex;
 	mlx_texture_t	*so_tex;
 	mlx_texture_t	*we_tex;
 	mlx_texture_t	*ea_tex;
+	mlx_texture_t	*door_tex;
 }	t_texture;
 
 typedef struct my_mlx_s
@@ -92,5 +95,5 @@ unsigned int	get_texture_color(mlx_texture_t *tex, unsigned int x, unsigned int 
 void			adjust_color(mlx_image_t *image, unsigned int x, unsigned int y, unsigned int c);
 double			get_text_x(my_mlx_t *mlx, double wall_inter);
 double			get_tex_y(my_mlx_t *mlx, double y, double wall_height);
-
+int				is_valid_doors(char **layout);
 #endif

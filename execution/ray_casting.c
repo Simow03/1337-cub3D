@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: achater <achater@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 11:48:43 by achater           #+#    #+#             */
-/*   Updated: 2024/09/28 11:32:34 by achater          ###   ########.fr       */
+/*   Updated: 2024/09/30 18:46:13 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -157,10 +157,11 @@ void	ray_casting(my_mlx_t *mlx)
 		}
 		correct_distance = distance * cos((a - mlx->angle) * M_PI / 180);
 		double wall_height = (mlx->height / correct_distance) * mlx->block_size;
+		//line added to smooth tex_mapping ->
+		wall_height = fmin(wall_height, mlx->height * 2);
 		double wall_start = (mlx->height / 2) - (wall_height / 2);
 		double wall_end = wall_start + wall_height;
 		double y = wall_start - 1;
-		//! ==== TEXTURE MAPPING ===== !//
 		int				tex_x;
 		int				tex_y;
 		unsigned int	pixel_color;
