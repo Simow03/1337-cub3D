@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 11:48:43 by achater           #+#    #+#             */
-/*   Updated: 2024/09/30 18:46:13 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/10/01 16:40:49 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,13 @@ double	horizontal_distance(my_mlx_t *mlx, double Px, double Py, double a)
 		if (map_x >= 0 && map_x < (int)mlx->cols && map_y >= 0 && map_y < (int)mlx->rows)
 		{
 			if (mlx->map[map_y][map_x] == '1' || mlx->map[map_y][map_x] == 'C')
+			{
+				if(mlx->map[map_y][map_x] == 'C')
+					mlx->door = 1;
+				else
+					mlx->door = 0;
 				break;
+			}
 		}
 		x_ray += xstep;
 		y_ray += ystep;
@@ -106,7 +112,13 @@ double	vertical_distance(my_mlx_t *mlx, double Px, double Py, double a)
 		if (map_x >= 0 && map_x < (int)mlx->cols && map_y >= 0 && map_y < (int)mlx->rows)
 		{
 			if (mlx->map[map_y][map_x] == '1' || mlx->map[map_y][map_x] == 'C')
+			{
+				if(mlx->map[map_y][map_x] == 'C')
+					mlx->door = 1;
+				else
+					mlx->door = 0;
 				break;
+			}
 		}
 		x_ray += xstep;
 		y_ray += ystep;
@@ -157,16 +169,21 @@ void	ray_casting(my_mlx_t *mlx)
 		}
 		correct_distance = distance * cos((a - mlx->angle) * M_PI / 180);
 		double wall_height = (mlx->height / correct_distance) * mlx->block_size;
-		//line added to smooth tex_mapping ->
-		wall_height = fmin(wall_height, mlx->height * 2);
 		double wall_start = (mlx->height / 2) - (wall_height / 2);
+		if (wall_start < 0.0)
+			wall_start = 0.0;
 		double wall_end = wall_start + wall_height;
+		if (wall_end > mlx->height)
+			wall_end = mlx->height;
 		double y = wall_start - 1;
 		int				tex_x;
 		int				tex_y;
 		unsigned int	pixel_color;
 
-		get_which_texture_side(mlx, mlx->wall_inter_x, mlx->wall_inter_y);
+		if (mlx->door == 1)
+			mlx->curr_texture = mlx->texture->door_tex;
+		else
+			get_which_texture_side(mlx, mlx->wall_inter_x, mlx->wall_inter_y);
 		tex_x = get_text_x(mlx, mlx->wall_inter);
 		int x = 0;
 		while(x < wall_start)

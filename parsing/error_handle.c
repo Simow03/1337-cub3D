@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 14:52:06 by mstaali           #+#    #+#             */
-/*   Updated: 2024/09/30 18:41:30 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/10/01 15:17:11 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	error_mssg(int flag)
 	if (flag == TEXTURE_ARG)
 		ft_putstr_fd("Invalid texture arguments\n\n", STDERR_FILENO);
 	if (flag == NOT_EXIST)
-		ft_putstr_fd("Texture file does not exist\n\n", STDERR_FILENO);
+		ft_putstr_fd("Texture did not load\n\n", STDERR_FILENO);
 	if (flag == PERMISSION)
 		ft_putstr_fd("Permission denied\n\n", STDERR_FILENO);
 	if (flag == CHECK_FILE)
@@ -41,5 +41,7 @@ void	error_mssg(int flag)
 		ft_putstr_fd("Player not found in map\n\n", STDERR_FILENO);
 	if (flag == DOORS)
 		ft_putstr_fd("Invalid door placement\n\n", STDERR_FILENO);
+	if (flag == FRAMES)
+		ft_putstr_fd("Frame did not load\n\n", STDERR_FILENO);
 	exit(EXIT_FAILURE);
 }
