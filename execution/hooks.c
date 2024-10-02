@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 12:18:53 by achater           #+#    #+#             */
-/*   Updated: 2024/10/01 16:27:57 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/10/02 16:39:46 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,23 +77,21 @@ void	key_fct(struct mlx_key_data key, void *param)
 		open_close_door(mlx);
 }
 
-// void	animate_sprite(my_mlx_t *mlx)
-// {
-// 	double	curr_time;
+void	animate_sprite(my_mlx_t *mlx)
+{
+	double	curr_time;
 
-// 	if (mlx->is_animated == 0)
-//         return ;
-// 	curr_time = mlx_get_time();
-//     if (curr_time - mlx->last_frame_time >= 0.5)
-//     {
-// 		mlx_set_instance_depth(&mlx->sprite_frames[mlx->curr_frame]->instances[0], -1);
-// 		mlx->curr_frame = (mlx->curr_frame + 1) % mlx->num_frames;
-// 		mlx->last_frame_time = curr_time;
-// 		mlx_set_instance_depth(&mlx->sprite_frames[mlx->curr_frame]->instances[0], 0);
-// 		if (mlx->curr_frame == 0)
-// 			mlx->is_animated = 0;
-//     }
-// }
+	if (mlx->is_animated == 0)
+		return ;
+	curr_time = mlx_get_time();
+    if (curr_time - mlx->last_frame_time >= 0.3)
+    {
+		mlx->curr_frame = (mlx->curr_frame + 1) % mlx->num_frames;
+		mlx->last_frame_time = curr_time;
+		if (mlx->curr_frame == 0)
+			mlx->is_animated = 0;
+    }
+}
 
 void mouse_hook(my_mlx_t *mlx)
 {
@@ -109,12 +107,6 @@ void mouse_hook(my_mlx_t *mlx)
 		mlx->angle -= (mlx->width / 2 - x) * 180 / mlx->width / 3;
 		normalize_angle(&mlx->angle);
 	}
-	// if (mlx_is_mouse_down(mlx->mlx, MLX_MOUSE_BUTTON_RIGHT))
-    // {	
-	// 	mlx->is_animated = 1;
-	// 	mlx->curr_frame = 0;
-	// 	mlx->last_frame_time = mlx_get_time();
-    // }
 	mlx_key_hook(mlx->mlx, key_fct, mlx);
 }
 
@@ -141,7 +133,6 @@ void hook_fct(void *param)
 	if (mlx_is_key_down(mlx->mlx, 68))
 		move(mlx, 90);
 	mlx_key_hook(mlx->mlx, key_fct, mlx);
-	// animate_sprite(mlx);
 	mlx_delete_image(mlx->mlx, mlx->img);
 	mlx->img = mlx_new_image(mlx->mlx, mlx->width, mlx->height);
 	draw_mlx(mlx);

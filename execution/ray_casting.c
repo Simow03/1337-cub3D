@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/26 11:48:43 by achater           #+#    #+#             */
-/*   Updated: 2024/10/01 16:40:49 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/10/02 18:42:26 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,7 +185,7 @@ void	ray_casting(my_mlx_t *mlx)
 		else
 			get_which_texture_side(mlx, mlx->wall_inter_x, mlx->wall_inter_y);
 		tex_x = get_text_x(mlx, mlx->wall_inter);
-		int x = 0;
+		double x = 0;
 		while(x < wall_start)
 		{
 			mlx_put_pixel(mlx->img, screen_x, x, mlx->texture->c_clr);
