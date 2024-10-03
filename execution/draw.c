@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 11:08:58 by achater           #+#    #+#             */
-/*   Updated: 2024/10/02 18:35:51 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/10/03 01:13:46 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,6 @@ void draw_mlx(my_mlx_t *mlx)
 {
 	ray_casting(mlx);
 	draw_mini_map(mlx);
-	// draw_sprite(mlx, mlx->sprite_frames[0], mlx->sprite_textures[0]);
 }
 
 void	main_fct(my_mlx_t *mlx)
@@ -138,8 +137,7 @@ void	main_fct(my_mlx_t *mlx)
 	load_sprite_frames(mlx);
 	draw_mlx(mlx);
 	mlx_image_to_window(mlx->mlx, mlx->img, 0, 0);
-	// mlx_delete_image(mlx->mlx, mlx->img);
-	draw_sprite(mlx, mlx->sprite_frames[0],mlx->sprite_textures[0]);
+	draw_sprite(mlx, mlx->sprite_frames[0], mlx->sprite_textures[0]);
 	mlx_set_cursor_mode(mlx->mlx, MLX_MOUSE_HIDDEN);
 	mlx_loop_hook(mlx->mlx, hook_fct, mlx);
 	mlx_loop(mlx->mlx);

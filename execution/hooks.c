@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 12:18:53 by achater           #+#    #+#             */
-/*   Updated: 2024/10/02 16:39:46 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/10/03 01:12:35 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,18 +79,37 @@ void	key_fct(struct mlx_key_data key, void *param)
 
 void	animate_sprite(my_mlx_t *mlx)
 {
-	double	curr_time;
+	static int	last_state;
+	int 		curr_state;
+	double		current_time;
 
-	if (mlx->is_animated == 0)
-		return ;
-	curr_time = mlx_get_time();
-    if (curr_time - mlx->last_frame_time >= 0.3)
-    {
-		mlx->curr_frame = (mlx->curr_frame + 1) % mlx->num_frames;
-		mlx->last_frame_time = curr_time;
-		if (mlx->curr_frame == 0)
-			mlx->is_animated = 0;
-    }
+	last_state = 0;
+	curr_state = mlx_is_mouse_down(mlx->mlx, MLX_MOUSE_BUTTON_RIGHT);
+	if (curr_state && !last_state && !mlx->is_animated)
+	{
+		mlx->is_animated = 1;
+		mlx->curr_frame = 0;
+		mlx->last_frame_time = mlx_get_time();
+	}
+	last_state = curr_state;
+    if (mlx->is_animated)
+	{
+		current_time = mlx_get_time();
+		if (current_time - mlx->last_frame_time >= 0.05)
+		{
+			if (mlx->sprite_frames[mlx->curr_frame])
+				mlx_delete_image(mlx->mlx, mlx->sprite_frames[mlx->curr_frame]);
+			mlx->curr_frame++;
+			if (mlx->curr_frame >= mlx->num_frames)
+			{
+				mlx->curr_frame = 0;
+				mlx->is_animated = 0;
+			}
+			mlx->sprite_frames[mlx->curr_frame] = mlx_texture_to_image(mlx->mlx, mlx->sprite_textures[mlx->curr_frame]);
+			draw_sprite(mlx, mlx->sprite_frames[mlx->curr_frame], mlx->sprite_textures[mlx->curr_frame]);
+			mlx->last_frame_time = current_time;
+		}
+	}
 }
 
 void mouse_hook(my_mlx_t *mlx)
@@ -116,6 +135,7 @@ void hook_fct(void *param)
 
 	mlx = (my_mlx_t *)param;
 	mouse_hook(mlx);
+	animate_sprite(mlx);
 	if (mlx_is_key_down(mlx->mlx, 256))
 		mlx_close_window(mlx->mlx);
 	if (!mlx->hidden)

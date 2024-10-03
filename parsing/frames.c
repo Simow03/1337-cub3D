@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:11:26 by mstaali           #+#    #+#             */
-/*   Updated: 2024/10/02 17:50:12 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/10/03 00:42:20 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	load_sprite_frames(my_mlx_t *mlx)
 	mlx->num_frames = 7;
 	mlx->curr_frame = 0;
     mlx->is_animated = 0;
-    mlx->last_frame_time = 0;
+    mlx->last_frame_time = mlx_get_time();
 	mlx->sprite_textures = (mlx_texture_t **)malloc(sizeof(mlx_texture_t *) * mlx->num_frames);
 	if (!mlx->sprite_textures)
 		error_mssg(FRAMES);
