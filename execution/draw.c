@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 11:08:58 by achater           #+#    #+#             */
-/*   Updated: 2024/10/03 01:13:46 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/10/03 14:51:38 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,28 @@ void	draw_sprite(my_mlx_t *mlx, mlx_image_t *sprite_frame, mlx_texture_t *sprite
 
 void draw_mlx(my_mlx_t *mlx)
 {
+	// unsigned int i;
+	// unsigned int j;
+
+	// i = 0;
+	// while(i < mlx->rows)
+	// {
+	// 	j = 0;
+	// 	while(j < mlx->cols)
+	// 	{
+	// 		if (mlx->map[i][j] == '1')
+	// 			color_the_block(mlx->img, j *mlx->block_size, i * mlx->block_size
+	// 				, mlx->block_size, mlx->block_size, ft_pixel(0, 0, 0, 255));
+	// 		else if (mlx->map[i][j] == '0' || mlx->map[i][j] == 'N'
+	// 			|| mlx->map[i][j] == 'E' || mlx->map[i][j] == 'S'
+	// 				|| mlx->map[i][j] == 'W')
+	// 			color_the_block(mlx->img,j * mlx->block_size, i * mlx->block_size
+	// 				, mlx->block_size, mlx->block_size, ft_pixel(255, 255, 255, 255));
+	// 		j++;
+	// 	}
+	// 	i++;
+	// }
+	// draw_player(mlx->img, mlx->x, mlx->y , 10, ft_pixel(255, 0, 0, 255));
 	ray_casting(mlx);
 	draw_mini_map(mlx);
 }
@@ -140,5 +162,7 @@ void	main_fct(my_mlx_t *mlx)
 	draw_sprite(mlx, mlx->sprite_frames[0], mlx->sprite_textures[0]);
 	mlx_set_cursor_mode(mlx->mlx, MLX_MOUSE_HIDDEN);
 	mlx_loop_hook(mlx->mlx, hook_fct, mlx);
+	// // mlx_close_window(mlx);
 	mlx_loop(mlx->mlx);
+	// mlx_terminate(mlx->mlx);
 }

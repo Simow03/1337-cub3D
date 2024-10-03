@@ -77,6 +77,8 @@ typedef struct my_mlx_s
 	double			wall_inter;
 	t_texture		*texture;
 	int	door;
+	int v_door;
+	int h_door;
 	int	hidden;
 }	my_mlx_t;
 
@@ -105,5 +107,6 @@ double			get_text_x(my_mlx_t *mlx, double wall_inter);
 double			get_tex_y(my_mlx_t *mlx, double y, double wall_height);
 int				is_valid_doors(char **layout);
 void			load_sprite_frames(my_mlx_t *mlx);
+void			animate_sprite(my_mlx_t *mlx);
 void			draw_sprite(my_mlx_t *mlx, mlx_image_t *sprite_frame, mlx_texture_t *sprite_texture);
 #endif
