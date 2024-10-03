@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 12:18:53 by achater           #+#    #+#             */
-/*   Updated: 2024/10/03 14:53:49 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/10/03 17:40:25 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,11 +124,12 @@ void hook_fct(void *param)
 
 	mlx = (my_mlx_t *)param;
 	mouse_hook(mlx);
-	animate_sprite(mlx);
+	draw_sprite(mlx, mlx->sprite_frames[mlx->curr_frame], mlx->sprite_textures[mlx->curr_frame]);
 	if (mlx_is_key_down(mlx->mlx, 256))
 		mlx_close_window(mlx->mlx);
 	if (!mlx->hidden)
 		return ;
+	animate_sprite(mlx);
 	if (mlx_is_key_down(mlx->mlx, 262))
 		rotate(mlx, 2);
 	if (mlx_is_key_down(mlx->mlx, 263))
@@ -143,8 +144,8 @@ void hook_fct(void *param)
 		move(mlx, 90);
 	mlx_key_hook(mlx->mlx, key_fct, mlx);
 	// animate_sprite(mlx);
-	mlx_delete_image(mlx->mlx, mlx->img);
-	mlx->img = mlx_new_image(mlx->mlx, mlx->width, mlx->height);
+	// mlx_delete_image(mlx->mlx, mlx->img);
+	// mlx->img = mlx_new_image(mlx->mlx, mlx->width, mlx->height);
 	draw_mlx(mlx);
 	mlx_image_to_window(mlx->mlx, mlx->img, 0, 0);
 }
