@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 14:58:19 by mstaali           #+#    #+#             */
-/*   Updated: 2024/10/09 16:23:32 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/10/15 18:12:08 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,9 @@ void	fill_texture(t_texture *texture, char **components)
 void	check_textures(my_mlx_t *mlx, char **layout)
 {
 	t_texture	*texture;
-	char		**components = NULL;
+	char		**components;
 
+	components = NULL;
 	texture = malloc(sizeof(t_texture));
 	init_texture(texture);
 	int	i;
@@ -102,8 +103,18 @@ void	check_textures(my_mlx_t *mlx, char **layout)
 	while (layout[++i] && i < 7)
 	{
 		components = ft_split_set(layout[i], "\t ");
-		if (ft_dbl_strlen(components) != 2)
+		if (!components || ft_dbl_strlen(components) != 2)
 		{
+			if (texture->no_tex)
+				mlx_delete_texture(texture->no_tex);
+			if (texture->so_tex)
+				mlx_delete_texture(texture->so_tex);
+			if (texture->we_tex)
+				mlx_delete_texture(texture->we_tex);
+			if (texture->ea_tex)
+				mlx_delete_texture(texture->ea_tex);
+			if (texture->door_tex)
+			mlx_delete_texture(texture->door_tex);
 			free(mlx);
 			free(texture);
 			ft_dbl_free(components);
@@ -111,12 +122,23 @@ void	check_textures(my_mlx_t *mlx, char **layout)
 		}
 		if (!is_valid_texture(components[0]))
 		{
+			if (texture->no_tex)
+				mlx_delete_texture(texture->no_tex);
+			if (texture->so_tex)
+				mlx_delete_texture(texture->so_tex);
+			if (texture->we_tex)
+				mlx_delete_texture(texture->we_tex);
+			if (texture->ea_tex)
+				mlx_delete_texture(texture->ea_tex);
+			if (texture->door_tex)
+			mlx_delete_texture(texture->door_tex);
 			free(mlx);
 			free(texture);
 			ft_dbl_free(components);
 			error_mssg(TEXTURE_ARG);
 		}
 		fill_texture(texture, components);
+		components = NULL;
 	}
 	mlx->texture = texture;
 }
