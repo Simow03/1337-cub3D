@@ -33,11 +33,6 @@ typedef enum e_error {
 
 typedef struct s_texture
 {
-	char			*no;
-	char			*so;
-	char			*we;
-	char			*ea;
-	char			*door;
 	unsigned int	f_clr;
 	unsigned int	c_clr;
 	mlx_texture_t	*no_tex;

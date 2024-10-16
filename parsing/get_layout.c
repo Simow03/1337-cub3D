@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 11:34:46 by mstaali           #+#    #+#             */
-/*   Updated: 2024/09/30 18:39:48 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/10/17 00:03:40 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,15 +123,6 @@ void	fill_map(my_mlx_t *mlx, char **layout)
 	map_padding(mlx, layout);
 }
 
-void	free_textures(t_texture *texture)
-{
-	free(texture->no);
-	free(texture->so);
-	free(texture->we);
-	free(texture->ea);
-	free(texture);
-}
-
 void	get_layout(my_mlx_t *mlx, char *av)
 {
 	char	*line;
@@ -144,19 +135,19 @@ void	get_layout(my_mlx_t *mlx, char *av)
 	check_textures(mlx, layout);
 	if (!is_surrounded_by_walls(layout + 7))
 	{
-		free_textures(mlx->texture);
+		free(mlx->texture);
 		free(mlx);
 		error_mssg(WALLS);
 	}
 	if (!player_exists(layout + 7))
 	{
-		free_textures(mlx->texture);
+		free(mlx->texture);
 		free(mlx);
 		error_mssg(PLAYER_NOT_FOUND);
 	}
 	if (!is_valid_doors(layout + 7))
 	{
-		free_textures(mlx->texture);
+		free(mlx->texture);
 		free(mlx);
 		error_mssg(DOORS);
 	}
