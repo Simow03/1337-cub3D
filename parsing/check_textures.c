@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 14:58:19 by mstaali           #+#    #+#             */
-/*   Updated: 2024/10/15 18:12:08 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/10/16 14:32:28 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,9 +92,8 @@ void	fill_texture(t_texture *texture, char **components)
 void	check_textures(my_mlx_t *mlx, char **layout)
 {
 	t_texture	*texture;
-	char		**components;
+	char		**components = NULL;
 
-	components = NULL;
 	texture = malloc(sizeof(t_texture));
 	init_texture(texture);
 	int	i;
@@ -114,7 +113,7 @@ void	check_textures(my_mlx_t *mlx, char **layout)
 			if (texture->ea_tex)
 				mlx_delete_texture(texture->ea_tex);
 			if (texture->door_tex)
-			mlx_delete_texture(texture->door_tex);
+				mlx_delete_texture(texture->door_tex);
 			free(mlx);
 			free(texture);
 			ft_dbl_free(components);
@@ -131,14 +130,13 @@ void	check_textures(my_mlx_t *mlx, char **layout)
 			if (texture->ea_tex)
 				mlx_delete_texture(texture->ea_tex);
 			if (texture->door_tex)
-			mlx_delete_texture(texture->door_tex);
+				mlx_delete_texture(texture->door_tex);
 			free(mlx);
 			free(texture);
 			ft_dbl_free(components);
 			error_mssg(TEXTURE_ARG);
 		}
 		fill_texture(texture, components);
-		components = NULL;
 	}
 	mlx->texture = texture;
 }

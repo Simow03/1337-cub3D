@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
+/*   By: achater <achater@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 13:33:23 by achater           #+#    #+#             */
-/*   Updated: 2024/10/15 16:39:50 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/10/12 10:54:46 by achater          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,11 @@ void f()
 	system("leaks cub3D");
 }
 
-void	cleanup(my_mlx_t *mlx)
-{
-	free(mlx->texture);
-	ft_dbl_free(mlx->map);
-	free(mlx);
-}
-
 int main(int ac, char **av)
 {
 	my_mlx_t	*mlx;
 
-	atexit(f);
+	// atexit(f);
 	if (ac != 2)
 		error_mssg(INVALID_INPUT);
 	else
@@ -50,11 +43,10 @@ int main(int ac, char **av)
 		check_extension(av[1]);
 		mlx = malloc(sizeof(my_mlx_t));
 		get_layout(mlx, av[1]);
-		mlx->block_size = 80;
+		mlx->b_size = 80;
 		mlx->width = 1280;
 		mlx->height = 720;
 		main_fct(mlx);
-		cleanup(mlx);
 		return (0);
 	}
 }
