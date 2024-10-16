@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:11:26 by mstaali           #+#    #+#             */
-/*   Updated: 2024/10/04 20:19:37 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/10/16 15:43:53 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,25 @@
 
 void	fill_frame_paths(mlx_texture_t **sprite_textures)
 {
-	sprite_textures[0] = mlx_load_png("assets/init_state.png");
+	sprite_textures[0] = mlx_load_png("assets/init_state_p.png");
 	if (!sprite_textures[0])
 		error_mssg(FRAMES);
-	sprite_textures[1] = mlx_load_png("assets/animate_1.png");
+	sprite_textures[1] = mlx_load_png("assets/animate_1_p.png");
 	if (!sprite_textures[1])
 		error_mssg(FRAMES);
-	sprite_textures[2] = mlx_load_png("assets/animate_2.png");
+	sprite_textures[2] = mlx_load_png("assets/animate_2_p.png");
 	if (!sprite_textures[2])
 		error_mssg(FRAMES);
-	sprite_textures[3] = mlx_load_png("assets/animate_3.png");
+	sprite_textures[3] = mlx_load_png("assets/animate_3_p.png");
 	if (!sprite_textures[3])
 		error_mssg(FRAMES);
-	sprite_textures[4] = mlx_load_png("assets/animate_4.png");
+	sprite_textures[4] = mlx_load_png("assets/animate_4_p.png");
 	if (!sprite_textures[4])
 		error_mssg(FRAMES);
-	sprite_textures[5] = mlx_load_png("assets/animate_5.png");
+	sprite_textures[5] = mlx_load_png("assets/animate_5_p.png");
 	if (!sprite_textures[5])
 		error_mssg(FRAMES);
-	sprite_textures[6] = mlx_load_png("assets/animate_6.png");
+	sprite_textures[6] = mlx_load_png("assets/animate_6_p.png");
 	if (!sprite_textures[6])
 		error_mssg(FRAMES);
 }
