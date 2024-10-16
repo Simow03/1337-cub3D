@@ -104,4 +104,5 @@ int				is_valid_doors(char **layout);
 void			load_sprite_frames(my_mlx_t *mlx);
 void			animate_sprite(my_mlx_t *mlx);
 void			draw_sprite(my_mlx_t *mlx, mlx_image_t *sprite_frame, mlx_texture_t *sprite_texture);
+unsigned int	rgb_to_uint(char *component);
 #endif
