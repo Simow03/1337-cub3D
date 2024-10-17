@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 10:58:19 by mstaali           #+#    #+#             */
-/*   Updated: 2024/09/10 12:39:39 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/10/17 19:48:10 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*get_next_line(int fd)
 	static char	buffer[BUFFER_SIZE];
 	char		line[70000];
 	static int	buffer_readed;
-	static int 	buffer_pos;
+	static int	buffer_pos;
 	int			i;
 
 	i = 0;

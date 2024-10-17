@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:11:26 by mstaali           #+#    #+#             */
-/*   Updated: 2024/10/17 01:33:11 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/10/17 19:28:34 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,25 @@ void	fill_frame_paths(mlx_texture_t **sprite_textures)
 {
 	sprite_textures[0] = mlx_load_png("assets/init_state_p.png");
 	if (!sprite_textures[0])
-		error_mssg(FRAMES);
+		error_mssg_2(FRAMES);
 	sprite_textures[1] = mlx_load_png("assets/animate_1_p.png");
 	if (!sprite_textures[1])
-		error_mssg(FRAMES);
+		error_mssg_2(FRAMES);
 	sprite_textures[2] = mlx_load_png("assets/animate_2_p.png");
 	if (!sprite_textures[2])
-		error_mssg(FRAMES);
+		error_mssg_2(FRAMES);
 	sprite_textures[3] = mlx_load_png("assets/animate_3_p.png");
 	if (!sprite_textures[3])
-		error_mssg(FRAMES);
+		error_mssg_2(FRAMES);
 	sprite_textures[4] = mlx_load_png("assets/animate_4_p.png");
 	if (!sprite_textures[4])
-		error_mssg(FRAMES);
+		error_mssg_2(FRAMES);
 	sprite_textures[5] = mlx_load_png("assets/animate_5_p.png");
 	if (!sprite_textures[5])
-		error_mssg(FRAMES);
+		error_mssg_2(FRAMES);
 	sprite_textures[6] = mlx_load_png("assets/animate_6_p.png");
 	if (!sprite_textures[6])
-		error_mssg(FRAMES);
+		error_mssg_2(FRAMES);
 }
 
 void	load_sprite_frames(my_mlx_t *mlx)
@@ -48,19 +48,19 @@ void	load_sprite_frames(my_mlx_t *mlx)
 	mlx->sprite_textures = (mlx_texture_t **)malloc(sizeof(mlx_texture_t *)
 			* mlx->num_frames);
 	if (!mlx->sprite_textures)
-		error_mssg(FRAMES);
+		error_mssg_2(FRAMES);
 	fill_frame_paths(mlx->sprite_textures);
 	mlx->sprite_frames = (mlx_image_t **)malloc(sizeof(mlx_image_t *)
 			* mlx->num_frames);
 	if (!mlx->sprite_frames)
-		error_mssg(FRAMES);
+		error_mssg_2(FRAMES);
 	i = -1;
 	while (++i < mlx->num_frames)
 	{
 		mlx->sprite_frames[i] = mlx_texture_to_image(mlx->mlx,
 				mlx->sprite_textures[i]);
 		if (!mlx->sprite_frames[i])
-			error_mssg(FRAMES);
+			error_mssg_2(FRAMES);
 	}
 }
 

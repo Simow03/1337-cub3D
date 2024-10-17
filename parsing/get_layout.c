@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 11:34:46 by mstaali           #+#    #+#             */
-/*   Updated: 2024/10/17 19:03:08 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/10/17 19:27:41 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,17 +102,17 @@ void	get_layout(my_mlx_t *mlx, char *av)
 	if (!is_surrounded_by_walls(layout + 7))
 	{
 		free_textures(mlx);
-		error_mssg(WALLS);
+		error_mssg_2(WALLS);
 	}
 	if (!player_exists(layout + 7))
 	{
 		free_textures(mlx);
-		error_mssg(PLAYER_NOT_FOUND);
+		error_mssg_2(PLAYER_NOT_FOUND);
 	}
 	if (!is_valid_doors(layout + 7))
 	{
 		free_textures(mlx);
-		error_mssg(DOORS);
+		error_mssg_2(DOORS);
 	}
 	fill_map(mlx, layout + 7);
 	ft_dbl_free(layout);
