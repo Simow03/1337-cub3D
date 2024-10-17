@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 12:18:53 by achater           #+#    #+#             */
-/*   Updated: 2024/10/16 23:28:12 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/10/17 19:13:42 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,10 @@ void hook_fct(void *param)
 	mlx = (my_mlx_t *)param;
 	mouse_hook(mlx);
 	if (mlx_is_key_down(mlx->mlx, 256))
+	{
 		mlx_close_window(mlx->mlx);
+		// ft_cleanup(mlx);
+	}
 	if (!mlx->hidden)
 		return ;
 	if (mlx_is_key_down(mlx->mlx, 262))
