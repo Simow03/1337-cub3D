@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:11:26 by mstaali           #+#    #+#             */
-/*   Updated: 2024/10/17 19:28:34 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/10/21 14:49:57 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,25 @@
 
 void	fill_frame_paths(mlx_texture_t **sprite_textures)
 {
-	sprite_textures[0] = mlx_load_png("assets/init_state_p.png");
+	sprite_textures[0] = mlx_load_png("assets/init_state.png");
 	if (!sprite_textures[0])
 		error_mssg_2(FRAMES);
-	sprite_textures[1] = mlx_load_png("assets/animate_1_p.png");
+	sprite_textures[1] = mlx_load_png("assets/animate_1.png");
 	if (!sprite_textures[1])
 		error_mssg_2(FRAMES);
-	sprite_textures[2] = mlx_load_png("assets/animate_2_p.png");
+	sprite_textures[2] = mlx_load_png("assets/animate_2.png");
 	if (!sprite_textures[2])
 		error_mssg_2(FRAMES);
-	sprite_textures[3] = mlx_load_png("assets/animate_3_p.png");
+	sprite_textures[3] = mlx_load_png("assets/animate_3.png");
 	if (!sprite_textures[3])
 		error_mssg_2(FRAMES);
-	sprite_textures[4] = mlx_load_png("assets/animate_4_p.png");
+	sprite_textures[4] = mlx_load_png("assets/animate_4.png");
 	if (!sprite_textures[4])
 		error_mssg_2(FRAMES);
-	sprite_textures[5] = mlx_load_png("assets/animate_5_p.png");
+	sprite_textures[5] = mlx_load_png("assets/animate_5.png");
 	if (!sprite_textures[5])
 		error_mssg_2(FRAMES);
-	sprite_textures[6] = mlx_load_png("assets/animate_6_p.png");
+	sprite_textures[6] = mlx_load_png("assets/animate_6.png");
 	if (!sprite_textures[6])
 		error_mssg_2(FRAMES);
 }
@@ -79,8 +79,7 @@ void	animation_process(my_mlx_t *mlx, double current_time)
 		}
 		mlx->sprite_frames[mlx->curr_frame] = mlx_texture_to_image(mlx->mlx,
 				mlx->sprite_textures[mlx->curr_frame]);
-		draw_sprite(mlx, mlx->sprite_frames[mlx->curr_frame],
-			mlx->sprite_textures[mlx->curr_frame]);
+		draw_sprite(mlx, mlx->sprite_textures[mlx->curr_frame], -1, -1);
 		mlx->last_frame_time = current_time;
 	}
 }
