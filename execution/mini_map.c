@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 13:13:31 by achater           #+#    #+#             */
-/*   Updated: 2024/10/21 14:49:20 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/10/21 16:39:26 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,24 +19,24 @@ void	draw_contour(my_mlx_t *mlx, int32_t color)
 	int	k;
 
 	i = -1;
-    while (++i < (10 * 20))
+	while (++i < (10 * 20))
 	{
 		k = -1;
-        while (++k < 4)
-        {
-            mlx_put_pixel(mlx->img, i, k, color);
-            mlx_put_pixel(mlx->img, i, (10 * 20) - 1 - k, color);
-        }
+		while (++k < 4)
+		{
+			mlx_put_pixel(mlx->img, i, k, color);
+			mlx_put_pixel(mlx->img, i, (10 * 20) - 1 - k, color);
+		}
 	}
 	j = -1;
-    while (++j < (10 * 20))
+	while (++j < (10 * 20))
 	{
 		k = -1;
-        while (++k < 4)
-        {
-            mlx_put_pixel(mlx->img, k, j, color);
-            mlx_put_pixel(mlx->img, (10 * 20) - 1 - k, j, color);
-        }
+		while (++k < 4)
+		{
+			mlx_put_pixel(mlx->img, k, j, color);
+			mlx_put_pixel(mlx->img, (10 * 20) - 1 - k, j, color);
+		}
 	}
 }
 
