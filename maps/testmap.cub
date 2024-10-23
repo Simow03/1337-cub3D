@@ -1,19 +1,21 @@
-NO textures/example_no.png
+NO textures/GRAY15.png
 
 
-SO textures/example_so.png
+SO textures/GRAY18.png
 
 
-WE textures/example_we.png
+WE textures/GRAY19.png
 
 
-EA textures/example_ea.png
+EA textures/GRAY22.png
+
+DO textures/SILVER2R.png
 
 
-F 9,100,90
+F 44,49,55
 
 
-C 225,30,0
+C 139,0,0
 
 11111111111111
 10000001000001
