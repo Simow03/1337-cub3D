@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 14:52:06 by mstaali           #+#    #+#             */
-/*   Updated: 2024/10/17 19:42:31 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/10/28 15:54:39 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	error_mssg_2(int flag)
 	if (flag == WALLS)
 		ft_putstr_fd("Map is not surrounded by walls\n\n", STDERR_FILENO);
 	if (flag == PLAYER_NOT_FOUND)
-		ft_putstr_fd("Player not found in map\n\n", STDERR_FILENO);
+		ft_putstr_fd("No player or multiple players found\n\n", STDERR_FILENO);
 	if (flag == DOORS)
 		ft_putstr_fd("Invalid door placement\n\n", STDERR_FILENO);
 	if (flag == FRAMES)

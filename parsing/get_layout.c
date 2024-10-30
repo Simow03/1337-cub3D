@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 11:34:46 by mstaali           #+#    #+#             */
-/*   Updated: 2024/10/17 19:27:41 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/10/30 17:18:06 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ char	*read_from_file(my_mlx_t *mlx, char *av)
 	int		fd;
 	char	*tmp;
 	char	*line;
+	char	*line2;
 	char	*new_line;
 
 	fd = open(av, O_RDONLY);
@@ -86,7 +87,8 @@ char	*read_from_file(my_mlx_t *mlx, char *av)
 		tmp = get_next_line(fd);
 	}
 	close(fd);
-	return (line);
+	line2 = ft_strtrim(line, "\n");
+	return (free(line), line2);
 }
 
 void	get_layout(my_mlx_t *mlx, char *av)
