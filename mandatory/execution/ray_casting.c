@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: achater <achater@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/26 11:48:43 by achater           #+#    #+#             */
-/*   Updated: 2024/10/31 21:18:45 by achater          ###   ########.fr       */
+/*   Created: 2024/10/25 10:13:04 by achater           #+#    #+#             */
+/*   Updated: 2024/10/25 10:14:29 by achater          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,8 @@ void	ray_h_helper(my_mlx_t *mlx, double *ax, double *ay, double a)
 		1 && (m_x = (int)(*ax / mlx->b_size), m_y = (int)(*ay / mlx->b_size));
 		if (m_x >= 0 && m_x < mlx->cols && m_y >= 0 && m_y < mlx->rows)
 		{
-			if (mlx->map[m_y][m_x] == '1' || mlx->map[m_y][m_x] == 'C')
-			{
-				(mlx->map[m_y][m_x] == 'C') && (mlx->h_door = 1);
-				(mlx->map[m_y][m_x] != 'C') && (mlx->h_door = 0);
+			if (mlx->map[m_y][m_x] == '1')
 				break ;
-			}
 		}
 		1 && (*ax += xstep, *ay += ystep);
 	}
@@ -66,12 +62,8 @@ void	ray_v_helper(my_mlx_t *mlx, double *ax, double *ay, double a)
 		1 && (m_x = (int)(*ax / mlx->b_size), m_y = (int)(*ay / mlx->b_size));
 		if (m_x >= 0 && m_x < mlx->cols && m_y >= 0 && m_y < mlx->rows)
 		{
-			if (mlx->map[m_y][m_x] == '1' || mlx->map[m_y][m_x] == 'C')
-			{
-				(mlx->map[m_y][m_x] == 'C') && (mlx->v_door = 1);
-				(mlx->map[m_y][m_x] != 'C') && (mlx->v_door = 0);
+			if (mlx->map[m_y][m_x] == '1')
 				break ;
-			}
 		}
 		1 && (*ax += xstep, *ay += ystep);
 	}
@@ -130,7 +122,6 @@ double	find_right_dist(my_mlx_t *mlx, double a)
 		mlx->wall_inter_x = mlx->x_h;
 		mlx->wall_inter_y = mlx->y_h;
 		mlx->is_vertical = 0;
-		mlx->door = mlx->h_door;
 	}
 	else
 	{
@@ -139,7 +130,6 @@ double	find_right_dist(my_mlx_t *mlx, double a)
 		mlx->wall_inter_x = mlx->x_v;
 		mlx->wall_inter_y = mlx->y_v;
 		mlx->is_vertical = 1;
-		mlx->door = mlx->v_door;
 	}
 	return (distance * cos((a - mlx->angle) * M_PI / 180));
 }
@@ -154,10 +144,7 @@ void	painting(my_mlx_t *mlx, double screen_x)
 
 	y = mlx->wall_start - 1;
 	x = -1;
-	if (mlx->door == 1)
-		mlx->curr_texture = mlx->texture->door_tex;
-	else
-		get_which_texture_side(mlx, mlx->wall_inter_x, mlx->wall_inter_y);
+	get_which_texture_side(mlx, mlx->wall_inter_x, mlx->wall_inter_y);
 	tex_x = get_text_x(mlx, mlx->wall_inter);
 	while (++x < mlx->wall_start)
 		mlx_put_pixel(mlx->img, screen_x, x, mlx->texture->c_clr);

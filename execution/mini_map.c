@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
+/*   By: achater <achater@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 13:13:31 by achater           #+#    #+#             */
-/*   Updated: 2024/10/23 02:48:55 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/11/01 10:54:31 by achater          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,8 @@ void	draw_mini_map(my_mlx_t *mlx)
 	j = -1;
 	i1 = mlx->x - 5 * mlx->b_size;
 	j1 = mlx->y - 5 * mlx->b_size;
-	x = (mlx->x - i1) / mlx->b_size * 20;
-	y = (mlx->y - j1) / mlx->b_size * 20;
+	x = 5 * 20;
+	y = 5 * 20;
 	while (++j < (10 * 20))
 		draw_helper(mlx, j1, i1, j);
 	draw_player(mlx, x, y, ft_pixel(255, 215, 0, 255));

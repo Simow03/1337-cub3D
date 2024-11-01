@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/01 04:17:18 by mstaali           #+#    #+#             */
-/*   Updated: 2024/11/01 04:25:27 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/11/01 17:00:57 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static char	**ft_free_array(char **array)
 char	**ft_split_once(char const *s, const char *set)
 {
 	char	**array;
+	size_t	start;
 	size_t	i;
 
 	if (!s)
@@ -40,11 +41,10 @@ char	**ft_split_once(char const *s, const char *set)
 	while (s[i] && !is_set_char(set, s[i]))
 		i++;
 	array[0] = ft_substr(s, 0, i);
-	if (!array[0])
-		return (ft_free_array(array));
-	while (s[i] && !is_set_char(set, s[i]))
+	while (s[i] && is_set_char(set, s[i]))
 		i++;
-	array[1] = ft_substr(s, i, ft_strlen(s) - i);
+	start = i;
+	array[1] = ft_substr(s, start, ft_strlen(s) - start);
 	if (!array[1])
 		return (ft_free_array(array));
 	array[2] = NULL;
