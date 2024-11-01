@@ -13,10 +13,8 @@ EA textures/GRAY22.png
 DO textures/SILVER2R.png
 
 
-F 44,49,55
-
-
-C 26,26,26
+F 44   ,     49    ,    55
+C 26    ,   26    ,   26
 
 11111111111111
 10000001000001

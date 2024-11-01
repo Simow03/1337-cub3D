@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 14:58:19 by mstaali           #+#    #+#             */
-/*   Updated: 2024/10/17 00:30:14 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/11/01 04:31:02 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,10 @@ void	fill_texture(my_mlx_t *mlx, char **layout)
 	texture = malloc(sizeof(t_texture));
 	while (layout[++i] && i < 7)
 	{
-		components = ft_split_set(layout[i], "\t ");
+		if (!ft_strncmp(layout[i], "C", 1) || !ft_strncmp(layout[i], "F", 1))
+			components = ft_split_once(layout[i], "\t ");
+		else
+			components = ft_split_set(layout[i], "\t ");
 		assign_tex(texture, components);
 		if (!texture->no_tex || !texture->so_tex || !texture->we_tex
 			|| !texture->ea_tex || !texture->door_tex)
@@ -71,13 +74,10 @@ void	check_textures(my_mlx_t *mlx, char **layout)
 	while (layout[++i] && i < 7)
 	{
 		components = ft_split_set(layout[i], "\t ");
-		if (!components || ft_dbl_strlen(components) != 2)
-		{
-			ft_dbl_free(components);
-			free(mlx);
-			error_mssg(TEXTURE_ARG);
-		}
-		if (!is_valid_texture(components[0]))
+		if (!components || (ft_strcmp(components[0], "C")
+				&& ft_strcmp(components[0], "F")
+				&& ft_dbl_strlen(components) != 2)
+			|| !is_valid_texture(components[0]))
 		{
 			ft_dbl_free(components);
 			free(mlx);
