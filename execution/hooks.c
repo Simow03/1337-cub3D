@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: achater <achater@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 10:11:24 by achater           #+#    #+#             */
-/*   Updated: 2024/10/25 10:12:41 by achater          ###   ########.fr       */
+/*   Updated: 2024/11/02 00:39:38 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub.h"
 
-void	rotate(my_mlx_t *mlx, int angle)
+void	rotate(t_my_mlx *mlx, int angle)
 {
 	mlx->angle += angle;
 	if (mlx->angle >= 360)
@@ -21,7 +21,7 @@ void	rotate(my_mlx_t *mlx, int angle)
 		mlx->angle += 360;
 }
 
-int	check_fct(my_mlx_t *mlx, double x, double y)
+int	check_fct(t_my_mlx *mlx, double x, double y)
 {
 	int	i;
 	int	j;
@@ -43,7 +43,7 @@ int	check_fct(my_mlx_t *mlx, double x, double y)
 	return (0);
 }
 
-void	move(my_mlx_t *mlx, double angle)
+void	move(t_my_mlx *mlx, double angle)
 {
 	double	y;
 	double	x;
@@ -58,10 +58,10 @@ void	move(my_mlx_t *mlx, double angle)
 
 void	hook_fct(void *param)
 {
-	my_mlx_t	*mlx;
+	t_my_mlx	*mlx;
 	int			i;
 
-	mlx = (my_mlx_t *)param;
+	mlx = (t_my_mlx *)param;
 	(mlx_is_key_down(mlx->mlx, 256)) && (mlx_close_window(mlx->mlx), i = -1);
 	(mlx_is_key_down(mlx->mlx, 262)) && (rotate(mlx, 2), i = -1);
 	(mlx_is_key_down(mlx->mlx, 263)) && (rotate(mlx, -2), i = -1);

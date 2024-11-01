@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 00:35:04 by mstaali           #+#    #+#             */
-/*   Updated: 2024/11/02 00:35:07 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/11/02 00:47:04 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@
 
 # include "libft/libft.h"
 
-typedef enum e_error {
+typedef enum e_error
+{
 	EXTENSION,
 	INVALID_INPUT,
 	MAP_CHAR,
@@ -54,78 +55,74 @@ typedef struct s_texture
 	mlx_texture_t	*door_tex;
 }	t_texture;
 
-typedef struct my_mlx_s
+typedef struct s_my_mlx
 {
-	mlx_t *mlx;
-	mlx_image_t 	*img;
+	mlx_t			*mlx;
+	mlx_image_t		*img;
 	mlx_image_t		**sprite_frames;
 	mlx_texture_t	**sprite_textures;
 	int				num_frames;
 	int				curr_frame;
 	int				is_animated;
 	double			last_frame_time;
-	char **map;
-	double angle;
-	double x;
-	double y;
-	int width;
-	int height;
-	unsigned int cols;
-	unsigned int rows;
-	int b_size;
-	int	is_vertical;
+	char			**map;
+	double			angle;
+	double			x;
+	double			y;
+	int				width;
+	int				height;
+	unsigned int	cols;
+	unsigned int	rows;
+	int				b_size;
+	int				is_vertical;
 	mlx_texture_t	*curr_texture;
-	double x_h;
-	double y_h;
-	double x_v;
-	double y_v;
+	double			x_h;
+	double			y_h;
+	double			x_v;
+	double			y_v;
 	double			wall_inter_x;
 	double			wall_inter_y;
 	double			wall_inter;
 	t_texture		*texture;
-	int	door;
-	int v_door;
-	int h_door;
-	int	hidden;
+	int				door;
+	int				v_door;
+	int				h_door;
+	int				hidden;
 	double			wall_height;
 	double			wall_start;
 	double			wall_end;
-	double	j2;
-	double	i2;
-}	my_mlx_t;
+	double			j2;
+	double			i2;
+}	t_my_mlx;
 
-void			main_fct(my_mlx_t *mlx);
-void 			hook_fct(void *param);
-void			draw_mlx(my_mlx_t *mlx);
-void			ray_casting(my_mlx_t *mlx);
-int32_t 		ft_pixel(int32_t r, int32_t g, int32_t b, int32_t a);
+void			main_fct(t_my_mlx *mlx);
+void			hook_fct(void *param);
+void			draw_mlx(t_my_mlx *mlx);
+void			ray_casting(t_my_mlx *mlx);
+int32_t			ft_pixel(int32_t r, int32_t g, int32_t b, int32_t a);
 void			normalize_angle(double *angle);
-void			draw_player(my_mlx_t *mlx, int x, int y, int color);
-void			draw_mini_map(my_mlx_t *mlx);
-void 			color_the_block(mlx_image_t *img,int i, int j, int width, int height, int color);
-void			open_close_door(my_mlx_t *mlx);
-
-
+void			draw_player(t_my_mlx *mlx, int x, int y, int color);
+void			draw_mini_map(t_my_mlx *mlx);
+void			open_close_door(t_my_mlx *mlx);
 void			error_mssg(int flag);
 void			error_mssg_2(int flag);
-void			get_layout(my_mlx_t *mlx, char *av);
-char			*trim_line(my_mlx_t *mlx,char *line);
+void			get_layout(t_my_mlx *mlx, char *av);
+char			*trim_line(t_my_mlx *mlx, char *line);
 char			*get_next_line(int fd);
-void			check_textures(my_mlx_t *mlx, char **layout);
+void			check_textures(t_my_mlx *mlx, char **layout);
 int				is_surrounded_by_walls(char **layout);
 int				player_exists(char **layout);
-void			get_which_texture_side(my_mlx_t *mlx, double ray_x, double ray_y);
-unsigned int	get_texture_color(mlx_texture_t *tex, unsigned int x, unsigned int y);
-void			adjust_color(mlx_image_t *image, unsigned int x, unsigned int y, unsigned int c);
-double			get_text_x(my_mlx_t *mlx, double wall_inter);
-double			get_tex_y(my_mlx_t *mlx, double y, double wall_height);
-int				is_valid_doors(char **layout);
-void			load_sprite_frames(my_mlx_t *mlx);
-void			animate_sprite(my_mlx_t *mlx);
-void			draw_sprite(my_mlx_t *mlx, mlx_texture_t *s_t, int x, int y);
+void			get_which_texture_side(t_my_mlx *mlx, double ray_x,
+					double ray_y);
+unsigned int	get_texture_color(mlx_texture_t *tex, unsigned int x,
+					unsigned int y);
+void			adjust_color(mlx_image_t *image, unsigned int x, unsigned int y,
+					unsigned int c);
+double			get_text_x(t_my_mlx *mlx, double wall_inter);
+double			get_tex_y(t_my_mlx *mlx, double y, double wall_height);
 unsigned int	rgb_to_uint(char *component);
-void			free_textures(my_mlx_t *mlx);
-void			fill_map(my_mlx_t *mlx, char **layout);
+void			free_textures(t_my_mlx *mlx);
+void			fill_map(t_my_mlx *mlx, char **layout);
 char			*ft_gnl_strjoin(char *stored, char *buffer);
 char			*ft_gnl_strchr(char *s, int c);
 size_t			ft_gnl_strlen(char *s);

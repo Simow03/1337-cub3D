@@ -6,13 +6,13 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 23:12:34 by mstaali           #+#    #+#             */
-/*   Updated: 2024/10/17 01:26:20 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/11/02 00:39:38 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub.h"
 
-void	get_which_texture_side(my_mlx_t *mlx, double ray_x, double ray_y)
+void	get_which_texture_side(t_my_mlx *mlx, double ray_x, double ray_y)
 {
 	int	grid_x;
 	int	grid_y;
@@ -35,7 +35,7 @@ void	get_which_texture_side(my_mlx_t *mlx, double ray_x, double ray_y)
 	}
 }
 
-double	get_text_x(my_mlx_t *mlx, double wall_inter)
+double	get_text_x(t_my_mlx *mlx, double wall_inter)
 {
 	double	tex_x;
 	double	offset;
@@ -45,7 +45,7 @@ double	get_text_x(my_mlx_t *mlx, double wall_inter)
 	return (tex_x);
 }
 
-double	get_tex_y(my_mlx_t *mlx, double y, double wall_height)
+double	get_tex_y(t_my_mlx *mlx, double y, double wall_height)
 {
 	double	tex_y;
 	double	wall_y;

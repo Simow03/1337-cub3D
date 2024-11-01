@@ -6,13 +6,13 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 13:33:23 by achater           #+#    #+#             */
-/*   Updated: 2024/11/01 20:28:06 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/11/02 00:45:44 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-void	free_textures(my_mlx_t *mlx)
+void	free_textures(t_my_mlx *mlx)
 {
 	mlx_delete_texture(mlx->texture->no_tex);
 	mlx_delete_texture(mlx->texture->so_tex);
@@ -37,22 +37,16 @@ void	check_extension(char *av)
 	error_mssg(EXTENSION);
 }
 
-void f()
+int	main(int ac, char **av)
 {
-	system("leaks cub3D");
-}
+	t_my_mlx	*mlx;
 
-int main(int ac, char **av)
-{
-	my_mlx_t	*mlx;
-
-	// atexit(f);
 	if (ac != 2)
 		error_mssg(INVALID_INPUT);
 	else
 	{
 		check_extension(av[1]);
-		mlx = malloc(sizeof(my_mlx_t));
+		mlx = malloc(sizeof(t_my_mlx));
 		get_layout(mlx, av[1]);
 		mlx->b_size = 80;
 		mlx->width = 1280;

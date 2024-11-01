@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 14:58:19 by mstaali           #+#    #+#             */
-/*   Updated: 2024/11/01 05:21:23 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/11/02 00:39:38 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	assign_tex(t_texture *texture, char **components)
 		texture->c_clr = rgb_to_uint(components[1]);
 }
 
-void	fill_texture(my_mlx_t *mlx, char **layout)
+void	fill_texture(t_my_mlx *mlx, char **layout)
 {
 	int			i;
 	t_texture	*texture;
@@ -61,7 +61,7 @@ void	fill_texture(my_mlx_t *mlx, char **layout)
 	mlx->texture = texture;
 }
 
-void	check_textures(my_mlx_t *mlx, char **layout)
+void	check_textures(t_my_mlx *mlx, char **layout)
 {
 	char		**components;
 	int			i;

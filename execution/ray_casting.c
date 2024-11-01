@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_casting.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: achater <achater@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 10:13:04 by achater           #+#    #+#             */
-/*   Updated: 2024/10/25 10:14:29 by achater          ###   ########.fr       */
+/*   Updated: 2024/11/02 00:39:38 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	normalize_angle(double *angle)
 		*angle += 360.0;
 }
 
-void	ray_h_helper(my_mlx_t *mlx, double *ax, double *ay, double a)
+void	ray_h_helper(t_my_mlx *mlx, double *ax, double *ay, double a)
 {
 	double			xstep;
 	double			ystep;
@@ -44,7 +44,7 @@ void	ray_h_helper(my_mlx_t *mlx, double *ax, double *ay, double a)
 	}
 }
 
-void	ray_v_helper(my_mlx_t *mlx, double *ax, double *ay, double a)
+void	ray_v_helper(t_my_mlx *mlx, double *ax, double *ay, double a)
 {
 	double			xstep;
 	double			ystep;
@@ -69,7 +69,7 @@ void	ray_v_helper(my_mlx_t *mlx, double *ax, double *ay, double a)
 	}
 }
 
-double	horizontal_distance(my_mlx_t *mlx, double Px, double Py, double a)
+double	horizontal_distance(t_my_mlx *mlx, double Px, double Py, double a)
 {
 	double	ax;
 	double	ay;
@@ -88,7 +88,7 @@ double	horizontal_distance(my_mlx_t *mlx, double Px, double Py, double a)
 	return (h_distance);
 }
 
-double	vertical_distance(my_mlx_t *mlx, double Px, double Py, double a)
+double	vertical_distance(t_my_mlx *mlx, double Px, double Py, double a)
 {
 	double	ax;
 	double	ay;
@@ -107,7 +107,7 @@ double	vertical_distance(my_mlx_t *mlx, double Px, double Py, double a)
 	return (v_distance);
 }
 
-double	find_right_dist(my_mlx_t *mlx, double a)
+double	find_right_dist(t_my_mlx *mlx, double a)
 {
 	double	h_distance;
 	double	v_distance;
@@ -134,7 +134,7 @@ double	find_right_dist(my_mlx_t *mlx, double a)
 	return (distance * cos((a - mlx->angle) * M_PI / 180));
 }
 
-void	painting(my_mlx_t *mlx, double screen_x)
+void	painting(t_my_mlx *mlx, double screen_x)
 {
 	double			y;
 	int				tex_x;
@@ -160,7 +160,7 @@ void	painting(my_mlx_t *mlx, double screen_x)
 		mlx_put_pixel(mlx->img, screen_x, y, mlx->texture->f_clr);
 }
 
-void	ray_casting(my_mlx_t *mlx)
+void	ray_casting(t_my_mlx *mlx)
 {
 	double	step;
 	double	screen_x;

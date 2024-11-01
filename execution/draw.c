@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: achater <achater@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 10:10:05 by achater           #+#    #+#             */
-/*   Updated: 2024/10/25 10:10:56 by achater          ###   ########.fr       */
+/*   Updated: 2024/11/02 00:39:38 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub.h"
 
-void	initiate_angle_pos(my_mlx_t *mlx)
+void	initiate_angle_pos(t_my_mlx *mlx)
 {
 	unsigned int	i;
 	unsigned int	j;
@@ -47,12 +47,12 @@ int32_t	ft_pixel(int32_t r, int32_t g, int32_t b, int32_t a)
 }
 
 
-void	draw_mlx(my_mlx_t *mlx)
+void	draw_mlx(t_my_mlx *mlx)
 {
 	ray_casting(mlx);
 }
 
-void	main_fct(my_mlx_t *mlx)
+void	main_fct(t_my_mlx *mlx)
 {
 	mlx->mlx = mlx_init(mlx->width, mlx->height, "cub3d", 0);
 	mlx->img = mlx_new_image(mlx->mlx, mlx->width, mlx->height);
