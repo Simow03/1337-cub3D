@@ -97,6 +97,7 @@ void			open_close_door(my_mlx_t *mlx);
 void			error_mssg(int flag);
 void			error_mssg_2(int flag);
 void			get_layout(my_mlx_t *mlx, char *av);
+char			*trim_line(my_mlx_t *mlx,char *line);
 char			*get_next_line(int fd);
 void			check_textures(my_mlx_t *mlx, char **layout);
 int				is_surrounded_by_walls(char **layout);

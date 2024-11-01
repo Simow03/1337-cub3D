@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 01:13:51 by mstaali           #+#    #+#             */
-/*   Updated: 2024/10/17 19:02:51 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/11/01 20:26:44 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,18 @@ void	fill_map(my_mlx_t *mlx, char **layout)
 		i++;
 	}
 	map_padding(mlx, layout);
+}
+
+char	*trim_line(my_mlx_t *mlx,char *line)
+{
+	char	*line2;
+
+	line2 = ft_strtrim(line, "\n");
+	if (!*line2)
+	{
+		free(line2);
+		free(mlx);
+		error_mssg(EMPTY_FILE);
+	}
+	return(line2);
 }
