@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub.h                                              :+:      :+:    :+:   */
+/*   cub_bonus.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/02 00:35:04 by mstaali           #+#    #+#             */
-/*   Updated: 2024/11/02 00:35:07 by mstaali          ###   ########.fr       */
+/*   Created: 2024/11/02 00:34:48 by mstaali           #+#    #+#             */
+/*   Updated: 2024/11/02 00:35:55 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB_H
-# define CUB_H
+#ifndef CUB_BONUS_H
+# define CUB_BONUS_H
 # define BUFFER_SIZE 42
-# define TEXTURE_WIDTH 160
-# define TEXTURE_HEIGHT 160
 
 # include <unistd.h>
 # include <errno.h>
@@ -22,9 +20,9 @@
 # include <math.h>
 # include <fcntl.h>
 # include <stdio.h>
-# include "../MLX42/include/MLX42/MLX42.h"
+# include "../../MLX42/include/MLX42/MLX42.h"
 
-# include "libft/libft.h"
+# include "../libft/libft.h"
 
 typedef enum e_error {
 	EXTENSION,
@@ -43,7 +41,7 @@ typedef enum e_error {
 	FRAMES
 }	t_error;
 
-typedef struct s_texture
+typedef struct	s_texture
 {
 	unsigned int	f_clr;
 	unsigned int	c_clr;

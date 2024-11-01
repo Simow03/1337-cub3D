@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   extract_map.c                                      :+:      :+:    :+:   */
+/*   extract_map_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 23:02:44 by mstaali           #+#    #+#             */
-/*   Updated: 2024/11/01 05:22:21 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/11/02 00:18:07 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub.h"
+#include "../cub_bonus.h"
 
 int	check_vert(char **layout, int len, int x, int y)
 {
@@ -78,4 +78,37 @@ int	player_exists(char **layout)
 		i++;
 	}
 	return (count);
+}
+
+int	door_placement(char **layout, int i, int j)
+{
+	if (j <= 0 || j >= (int)ft_strlen(layout[i]) - 1 || i <= 0
+		|| i >= (int)ft_dbl_strlen(layout) - 1)
+		return (0);
+	if (layout[i][j - 1] == '1' && layout[i][j + 1] == '1')
+		return (1);
+	if (layout[i - 1][j] == '1' && layout[i + 1][j] == '1')
+		return (1);
+	return (0);
+}
+
+int	is_valid_doors(char **layout)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (layout[i])
+	{
+		j = 0;
+		while (layout[i][j])
+		{
+			if (layout[i][j] == 'O' || layout[i][j] == 'C')
+				if (!door_placement(layout, i, j))
+					return (0);
+			j++;
+		}
+		i++;
+	}
+	return (1);
 }

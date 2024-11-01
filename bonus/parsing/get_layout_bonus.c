@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_layout.c                                       :+:      :+:    :+:   */
+/*   get_layout_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 11:34:46 by mstaali           #+#    #+#             */
-/*   Updated: 2024/11/01 20:36:50 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/11/02 00:17:59 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub.h"
+#include "../cub_bonus.h"
 
 int	is_map_character(char c)
 {
 	if (c == '0' || c == '1' || c == 'N'
 		|| c == 'S' || c == 'W' || c == 'E' || c == ' '
-		|| c == '\n' || c == '\t')
+		|| c == '\n' || c == '\t' || c == 'O' || c == 'C')
 		return (1);
 	return (0);
 }
@@ -101,16 +101,21 @@ void	get_layout(my_mlx_t *mlx, char *av)
 	layout = ft_split(line, '\n');
 	free(line);
 	check_textures(mlx, layout);
-	if (!is_surrounded_by_walls(layout + 6))
+	if (!is_surrounded_by_walls(layout + 7))
 	{
 		free_textures(mlx);
 		error_mssg_2(WALLS);
 	}
-	if (!player_exists(layout + 6))
+	if (!player_exists(layout + 7))
 	{
 		free_textures(mlx);
 		error_mssg_2(PLAYER_NOT_FOUND);
 	}
-	fill_map(mlx, layout + 6);
+	if (!is_valid_doors(layout + 7))
+	{
+		free_textures(mlx);
+		error_mssg_2(DOORS);
+	}
+	fill_map(mlx, layout + 7);
 	ft_dbl_free(layout);
 }

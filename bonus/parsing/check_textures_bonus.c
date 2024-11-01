@@ -6,17 +6,18 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 14:58:19 by mstaali           #+#    #+#             */
-/*   Updated: 2024/11/01 05:21:23 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/11/02 00:18:17 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub.h"
+#include "../cub_bonus.h"
 
 int	is_valid_texture(char *component)
 {
 	if (!ft_strcmp(component, "NO") || !ft_strcmp(component, "SO")
 		|| !ft_strcmp(component, "WE") || !ft_strcmp(component, "EA")
-		|| !ft_strcmp(component, "F") || !ft_strcmp(component, "C"))
+		|| !ft_strcmp(component, "F") || !ft_strcmp(component, "C")
+		|| !ft_strcmp(component, "DO"))
 		return (1);
 	return (0);
 }
@@ -31,6 +32,8 @@ void	assign_tex(t_texture *texture, char **components)
 		texture->we_tex = mlx_load_png(components[1]);
 	else if (!ft_strcmp(components[0], "EA"))
 		texture->ea_tex = mlx_load_png(components[1]);
+	else if (!ft_strcmp(components[0], "DO"))
+		texture->door_tex = mlx_load_png(components[1]);
 	else if (!ft_strcmp(components[0], "F"))
 		texture->f_clr = rgb_to_uint(components[1]);
 	else if (!ft_strcmp(components[0], "C"))
@@ -47,10 +50,7 @@ void	fill_texture(my_mlx_t *mlx, char **layout)
 	texture = malloc(sizeof(t_texture));
 	while (layout[++i] && i < 7)
 	{
-		if (!ft_strncmp(layout[i], "C", 1) || !ft_strncmp(layout[i], "F", 1))
-			components = ft_split_once(layout[i], "\t ");
-		else
-			components = ft_split_set(layout[i], "\t ");
+		components = ft_split_once(layout[i], "\t ");
 		assign_tex(texture, components);
 		if (!texture->no_tex || !texture->so_tex || !texture->we_tex
 			|| !texture->ea_tex || !texture->door_tex)
@@ -68,13 +68,10 @@ void	check_textures(my_mlx_t *mlx, char **layout)
 
 	i = -1;
 	components = NULL;
-	while (layout[++i] && i < 6)
+	while (layout[++i] && i < 7)
 	{
-		components = ft_split_set(layout[i], "\t ");
-		if (!components || (ft_strcmp(components[0], "C")
-				&& ft_strcmp(components[0], "F")
-				&& ft_dbl_strlen(components) != 2)
-			|| !is_valid_texture(components[0]))
+		components = ft_split_once(layout[i], "\t ");
+		if (!components || !is_valid_texture(components[0]))
 		{
 			ft_dbl_free(components);
 			free(mlx);
