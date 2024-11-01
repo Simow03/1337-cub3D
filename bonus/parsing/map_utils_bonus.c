@@ -6,13 +6,13 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 01:13:51 by mstaali           #+#    #+#             */
-/*   Updated: 2024/11/02 00:17:40 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/11/02 00:39:38 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub_bonus.h"
 
-static void	map_padding(my_mlx_t *mlx, char **layout)
+static void	map_padding(t_my_mlx *mlx, char **layout)
 {
 	int	i;
 	int	j;
@@ -35,7 +35,7 @@ static void	map_padding(my_mlx_t *mlx, char **layout)
 	mlx->map[mlx->rows] = NULL;
 }
 
-void	fill_map(my_mlx_t *mlx, char **layout)
+void	fill_map(t_my_mlx *mlx, char **layout)
 {
 	int		i;
 
@@ -51,7 +51,7 @@ void	fill_map(my_mlx_t *mlx, char **layout)
 	map_padding(mlx, layout);
 }
 
-char	*trim_line(my_mlx_t *mlx, char *line)
+char	*trim_line(t_my_mlx *mlx, char *line)
 {
 	char	*line2;
 

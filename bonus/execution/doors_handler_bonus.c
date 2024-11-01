@@ -6,13 +6,13 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/26 15:31:42 by achater           #+#    #+#             */
-/*   Updated: 2024/11/02 00:18:35 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/11/02 00:39:38 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub_bonus.h"
 
-void	open_close_door(my_mlx_t *mlx)
+void	open_close_door(t_my_mlx *mlx)
 {
 	double	x;
 	double	y;

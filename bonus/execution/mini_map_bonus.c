@@ -6,13 +6,13 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/23 13:13:31 by achater           #+#    #+#             */
-/*   Updated: 2024/11/02 00:18:24 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/11/02 00:39:38 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub_bonus.h"
 
-void	draw_contour(my_mlx_t *mlx, int32_t color)
+void	draw_contour(t_my_mlx *mlx, int32_t color)
 {
 	int	i;
 	int	j;
@@ -40,7 +40,7 @@ void	draw_contour(my_mlx_t *mlx, int32_t color)
 	}
 }
 
-void	draw_helper(my_mlx_t *mlx, double j1, double i1, int j)
+void	draw_helper(t_my_mlx *mlx, double j1, double i1, int j)
 {
 	int		i;
 
@@ -69,7 +69,7 @@ void	draw_helper(my_mlx_t *mlx, double j1, double i1, int j)
 	}
 }
 
-void	draw_mini_map(my_mlx_t *mlx)
+void	draw_mini_map(t_my_mlx *mlx)
 {
 	double	i1;
 	double	j1;

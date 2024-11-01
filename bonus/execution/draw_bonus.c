@@ -6,13 +6,13 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 11:08:58 by achater           #+#    #+#             */
-/*   Updated: 2024/11/02 00:18:31 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/11/02 00:39:38 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub_bonus.h"
 
-void	initiate_angle_pos(my_mlx_t *mlx)
+void	initiate_angle_pos(t_my_mlx *mlx)
 {
 	unsigned int	i;
 	unsigned int	j;
@@ -46,7 +46,7 @@ int32_t	ft_pixel(int32_t r, int32_t g, int32_t b, int32_t a)
 	return (r << 24 | g << 16 | b << 8 | a);
 }
 
-void	draw_player_deriction(my_mlx_t *mlx, int x, int y)
+void	draw_player_deriction(t_my_mlx *mlx, int x, int y)
 {
 	double	start_angle;
 	double	angle;
@@ -71,7 +71,7 @@ void	draw_player_deriction(my_mlx_t *mlx, int x, int y)
 	}
 }
 
-void	draw_player(my_mlx_t *mlx, int x, int y, int color)
+void	draw_player(t_my_mlx *mlx, int x, int y, int color)
 {
 	int	dx;
 	int	dy;
@@ -93,7 +93,7 @@ void	draw_player(my_mlx_t *mlx, int x, int y, int color)
 	}
 }
 
-void	draw_sprite(my_mlx_t *mlx, mlx_texture_t *s_t, int x, int y)
+void	draw_sprite(t_my_mlx *mlx, mlx_texture_t *s_t, int x, int y)
 {
 	int	pos_x;
 	int	pos_y;
@@ -122,13 +122,13 @@ void	draw_sprite(my_mlx_t *mlx, mlx_texture_t *s_t, int x, int y)
 	}
 }
 
-void	draw_mlx(my_mlx_t *mlx)
+void	draw_mlx(t_my_mlx *mlx)
 {
 	ray_casting(mlx);
 	draw_mini_map(mlx);
 }
 
-void	main_fct(my_mlx_t *mlx)
+void	main_fct(t_my_mlx *mlx)
 {
 	mlx->mlx = mlx_init(mlx->width, mlx->height, "cub3d", 0);
 	mlx->img = mlx_new_image(mlx->mlx, mlx->width, mlx->height);

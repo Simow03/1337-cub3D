@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 11:34:46 by mstaali           #+#    #+#             */
-/*   Updated: 2024/11/02 00:17:59 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/11/02 00:39:38 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	is_map_character(char c)
 	return (0);
 }
 
-void	validate_map_chars(my_mlx_t *mlx, char *line, int i)
+void	validate_map_chars(t_my_mlx *mlx, char *line, int i)
 {
 	while (line[i])
 	{
@@ -41,7 +41,7 @@ void	validate_map_chars(my_mlx_t *mlx, char *line, int i)
 	}
 }
 
-void	is_map_valid(my_mlx_t *mlx, char *line)
+void	is_map_valid(t_my_mlx *mlx, char *line)
 {
 	int	i;
 	int	texture;
@@ -62,7 +62,7 @@ void	is_map_valid(my_mlx_t *mlx, char *line)
 	validate_map_chars(mlx, line, i);
 }
 
-char	*read_from_file(my_mlx_t *mlx, char *av)
+char	*read_from_file(t_my_mlx *mlx, char *av)
 {
 	int		fd;
 	char	*tmp;
@@ -91,7 +91,7 @@ char	*read_from_file(my_mlx_t *mlx, char *av)
 	return (free(line), line2);
 }
 
-void	get_layout(my_mlx_t *mlx, char *av)
+void	get_layout(t_my_mlx *mlx, char *av)
 {
 	char	*line;
 	char	**layout;

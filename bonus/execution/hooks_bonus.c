@@ -6,13 +6,13 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 12:18:53 by achater           #+#    #+#             */
-/*   Updated: 2024/11/02 00:18:28 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/11/02 00:39:38 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub_bonus.h"
 
-void	rotate(my_mlx_t *mlx, int angle)
+void	rotate(t_my_mlx *mlx, int angle)
 {
 	mlx->angle += angle;
 	if (mlx->angle >= 360)
@@ -21,7 +21,7 @@ void	rotate(my_mlx_t *mlx, int angle)
 		mlx->angle += 360;
 }
 
-int	check_fct(my_mlx_t *mlx, double x, double y)
+int	check_fct(t_my_mlx *mlx, double x, double y)
 {
 	int	i;
 	int	j;
@@ -43,7 +43,7 @@ int	check_fct(my_mlx_t *mlx, double x, double y)
 	return (0);
 }
 
-void	move(my_mlx_t *mlx, double angle)
+void	move(t_my_mlx *mlx, double angle)
 {
 	double	y;
 	double	x;
@@ -58,9 +58,9 @@ void	move(my_mlx_t *mlx, double angle)
 
 void	key_fct(struct mlx_key_data key, void *param)
 {
-	my_mlx_t	*mlx;
+	t_my_mlx	*mlx;
 
-	mlx = (my_mlx_t *)param;
+	mlx = (t_my_mlx *)param;
 	if (key.key == MLX_KEY_P && key.action == MLX_RELEASE)
 	{
 		if (mlx->hidden == 0)
@@ -78,7 +78,7 @@ void	key_fct(struct mlx_key_data key, void *param)
 		open_close_door(mlx);
 }
 
-void	mouse_hook(my_mlx_t *mlx)
+void	mouse_hook(t_my_mlx *mlx)
 {
 	int	x;
 	int	y;
@@ -97,10 +97,10 @@ void	mouse_hook(my_mlx_t *mlx)
 
 void	hook_fct(void *param)
 {
-	my_mlx_t	*mlx;
+	t_my_mlx	*mlx;
 	int			i;
 
-	mlx = (my_mlx_t *)param;
+	mlx = (t_my_mlx *)param;
 	mouse_hook(mlx);
 	(mlx_is_key_down(mlx->mlx, 256)) && (mlx_close_window(mlx->mlx), i = -1);
 	if (!mlx->hidden)

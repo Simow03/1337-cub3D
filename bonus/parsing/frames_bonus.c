@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:11:26 by mstaali           #+#    #+#             */
-/*   Updated: 2024/11/02 00:33:00 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/11/02 00:39:38 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	fill_frame_paths(mlx_texture_t **sprite_textures)
 		error_mssg_2(FRAMES);
 }
 
-void	load_sprite_frames(my_mlx_t *mlx)
+void	load_sprite_frames(t_my_mlx *mlx)
 {
 	int	i;
 
@@ -64,7 +64,7 @@ void	load_sprite_frames(my_mlx_t *mlx)
 	}
 }
 
-void	animation_process(my_mlx_t *mlx, double current_time)
+void	animation_process(t_my_mlx *mlx, double current_time)
 {
 	current_time = mlx_get_time();
 	if (current_time - mlx->last_frame_time >= 0.04)
@@ -84,7 +84,7 @@ void	animation_process(my_mlx_t *mlx, double current_time)
 	}
 }
 
-void	animate_sprite(my_mlx_t *mlx)
+void	animate_sprite(t_my_mlx *mlx)
 {
 	static int	last_state;
 	int			curr_state;
