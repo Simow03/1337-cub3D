@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 00:35:04 by mstaali           #+#    #+#             */
-/*   Updated: 2024/11/02 01:00:27 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/11/02 19:24:25 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ typedef struct s_texture
 	mlx_texture_t	*so_tex;
 	mlx_texture_t	*we_tex;
 	mlx_texture_t	*ea_tex;
-	mlx_texture_t	*door_tex;
 }	t_texture;
 
 typedef struct s_my_mlx

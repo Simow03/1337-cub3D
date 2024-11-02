@@ -1,21 +1,20 @@
-NO block1/obsidian_n.png
+NO block2/oak_planks.png
 
 
-SO block1/packed_ice_n.png
+SO block2/birch_planks.png
 
 
-WE block1/stone_n.png
+WE block2/old_planks.png
 
 
-EA block1/powder_snow_n.png
+EA block2/spruce_planks.png
 
 
+DO block2/spruce_door_top.png
 
-F 202,235,255
+F 240,200,100
 
-
-C 130,180,220
-
+C 220,220,210
 
 
         1111111111111111111111111        1111111111111111111111111

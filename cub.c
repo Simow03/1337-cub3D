@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 13:33:23 by achater           #+#    #+#             */
-/*   Updated: 2024/11/02 00:45:44 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/11/02 19:24:07 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	free_textures(t_my_mlx *mlx)
 	mlx_delete_texture(mlx->texture->so_tex);
 	mlx_delete_texture(mlx->texture->ea_tex);
 	mlx_delete_texture(mlx->texture->we_tex);
-	mlx_delete_texture(mlx->texture->door_tex);
 	free(mlx->texture);
 	free(mlx);
 }

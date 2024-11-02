@@ -1,20 +1,23 @@
-NO block1/obsidian_n.png
+NO block/green_bottom.png
 
 
-SO block1/packed_ice_n.png
+SO block/crimson_planks_bottom_s.png
 
 
-WE block1/stone_n.png
+WE block/lapis_block_bottom.png
 
 
-EA block1/powder_snow_n.png
+EA block/deepslate_bottom.png
 
 
+DO block/carved_pumpkin.png
 
-F 202,235,255
+
+F 25,25,25
 
 
-C 130,180,220
+C 64,64,128
+
 
 
 
