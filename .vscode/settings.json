@@ -3,6 +3,7 @@
     "memory.h": "c",
     "stdlib.h": "c",
     "locale": "cpp",
-    "iterator": "c"
+    "iterator": "c",
+    "libft.h": "c"
   }
 }

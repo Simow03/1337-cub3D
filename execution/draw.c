@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 10:10:05 by achater           #+#    #+#             */
-/*   Updated: 2024/11/02 00:39:38 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/11/02 00:55:39 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ void	main_fct(t_my_mlx *mlx)
 	mlx->mlx = mlx_init(mlx->width, mlx->height, "cub3d", 0);
 	mlx->img = mlx_new_image(mlx->mlx, mlx->width, mlx->height);
 	initiate_angle_pos(mlx);
-	load_sprite_frames(mlx);
 	draw_mlx(mlx);
 	mlx_image_to_window(mlx->mlx, mlx->img, 0, 0);
 	mlx_set_cursor_mode(mlx->mlx, MLX_MOUSE_HIDDEN);

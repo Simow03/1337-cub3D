@@ -24,11 +24,11 @@ all: libft_make pre $(M_NAME)
 libft_make:
 	$(MAKE) -C libft
 
+pre:
+	cd ../MLX42 && cmake -B build && cmake --build build
+
 $(M_NAME): $(M_OBJS)
 	$(CC) $(CFLAGS) $(M_OBJS) $(MLX42_LIB) libft/libft.a $(LIBS) -o $(M_NAME)
-
-$(B_NAME): $(B_OBJS)
-	$(CC) $(CFLAGS) $(M_OBJS) $(MLX42_LIB) libft/libft.a $(LIBS) -o $(B_NAME)
 
 %.o: %.c cub.h
 	$(CC) $(CFLAGS)  -c $< -o $@
@@ -36,7 +36,11 @@ $(B_NAME): $(B_OBJS)
 bonus/%.o : bonus/%.c bonus/cub_bonus.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
-bonus: $(B_OBJS)
+$(B_NAME): $(B_OBJS)
+	$(CC) $(CFLAGS) $(M_OBJS) $(MLX42_LIB) libft/libft.a $(LIBS) -o $(B_NAME)
+
+
+bonus: libft_make pre $(B_OBJS)
 	$(CC) $(CFLAGS) $(B_OBJS) $(MLX42_LIB) libft/libft.a $(LIBS) -o $(B_NAME)
 
 clean:
@@ -47,8 +51,6 @@ fclean: clean
 	rm -f $(M_NAME) $(B_NAME)
 	cd ../MLX42 && rm -rf build
 	$(MAKE) -C libft fclean
-pre:
-	cd ../MLX42 && cmake -B build && cmake --build build
 
 re: fclean all
 
