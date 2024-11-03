@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 15:11:26 by mstaali           #+#    #+#             */
-/*   Updated: 2024/11/02 00:39:38 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/11/03 12:49:47 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,10 @@ void	animation_process(t_my_mlx *mlx, double current_time)
 	if (current_time - mlx->last_frame_time >= 0.04)
 	{
 		if (mlx->sprite_frames[mlx->curr_frame])
+		{
 			mlx_delete_image(mlx->mlx, mlx->sprite_frames[mlx->curr_frame]);
+			mlx->sprite_frames[mlx->curr_frame] = NULL;
+		}
 		mlx->curr_frame++;
 		if (mlx->curr_frame >= mlx->num_frames)
 		{

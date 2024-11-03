@@ -3,14 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   cub.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: achater <achater@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 13:33:23 by achater           #+#    #+#             */
-/*   Updated: 2024/11/03 11:44:22 by achater          ###   ########.fr       */
+/*   Updated: 2024/11/03 12:28:56 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
+
+void	ft_exit(t_my_mlx *mlx)
+{
+	mlx_delete_texture(mlx->texture->no_tex);
+	mlx_delete_texture(mlx->texture->so_tex);
+	mlx_delete_texture(mlx->texture->ea_tex);
+	mlx_delete_texture(mlx->texture->we_tex);
+	free(mlx->texture);
+	ft_dbl_free(mlx->map);
+	free(mlx);
+}
 
 void	free_textures(t_my_mlx *mlx)
 {
@@ -38,7 +49,6 @@ void	check_extension(char *av)
 
 void	f()
 {
-	system("lsof -c cub3D");
 	system("leaks cub3D");
 }
 
@@ -58,6 +68,7 @@ int	main(int ac, char **av)
 		mlx->width = 1280;
 		mlx->height = 720;
 		main_fct(mlx);
-		exit(0);
+		ft_exit(mlx);
+		return (0);
 	}
 }

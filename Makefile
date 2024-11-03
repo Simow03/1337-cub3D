@@ -3,7 +3,7 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -Iinclude #-fsanitize=address -g
 
 MLX42_LIB = ../MLX42/build/libmlx42.a
-LIBS = -L /Users/achater/.brew/lib -lglfw -framework Cocoa -framework OpenGL -framework IOKit
+LIBS = -L /Users/$(USER)/.brew/lib -lglfw -framework Cocoa -framework OpenGL -framework IOKit
 
 M_NAME = cub3D
 B_NAME = cub3D_bonus

@@ -3,14 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   cub_bonus.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: achater <achater@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 13:33:23 by achater           #+#    #+#             */
-/*   Updated: 2024/11/03 11:44:28 by achater          ###   ########.fr       */
+/*   Updated: 2024/11/03 12:54:15 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub_bonus.h"
+
+void	ft_exit(t_my_mlx *mlx)
+{
+	mlx_delete_texture(mlx->texture->no_tex);
+	mlx_delete_texture(mlx->texture->so_tex);
+	mlx_delete_texture(mlx->texture->ea_tex);
+	mlx_delete_texture(mlx->texture->we_tex);
+	mlx_delete_texture(mlx->texture->door_tex);
+	free(mlx->texture);
+	ft_dbl_free(mlx->map);
+	int	i = -1;
+	while (++i < mlx->num_frames)
+		if (mlx->sprite_textures[i])
+			mlx_delete_texture(mlx->sprite_textures[i]);
+	free(mlx->sprite_textures);
+	free(mlx->sprite_frames);
+	free(mlx);
+}
 
 void	free_textures(t_my_mlx *mlx)
 {
@@ -39,8 +57,7 @@ void	check_extension(char *av)
 
 void	f()
 {
-	system("lsof -c cub3D");
-	system("leaks cub3D");
+	system("leaks cub3D_bonus");
 }
 int	main(int ac, char **av)
 {
@@ -58,6 +75,7 @@ int	main(int ac, char **av)
 		mlx->width = 1280;
 		mlx->height = 720;
 		main_fct(mlx);
-		exit(0);
+		ft_exit(mlx);
+		return(0);
 	}
 }

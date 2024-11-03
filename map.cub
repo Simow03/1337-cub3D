@@ -7,6 +7,7 @@ WE textures/GRAY19.png
 
 
 EA textures/GRAY22.png
+DO textures/GRAY22.png
 
 
 F 44,49,55
@@ -14,7 +15,7 @@ F 44,49,55
 
 C 26,26,26
 
-11111
-10111
-1N001
-11111
+
+101
+1N1
+111
