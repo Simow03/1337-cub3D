@@ -1,19 +1,21 @@
-NO block/green_bottom.png
+NO        textures/GRAY15 16.png
+
+SO textures/GRAY18.png
 
 
-SO block/crimson_planks_bottom_s.png
+WE textures/GRAY19.png
 
 
-WE block/lapis_block_bottom.png
+EA textures/GRAY22.png
+DO textures/GRAY22.png
 
 
-EA block/deepslate_bottom.png
+F 44,49,55
 
 
+C 26,26,26
 
-F 25,25,25
-
-
-C 64,64,128
-
-1
+11111
+10  1
+1N001
+11111

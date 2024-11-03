@@ -6,11 +6,20 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 00:29:50 by mstaali           #+#    #+#             */
-/*   Updated: 2024/11/02 17:34:42 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/11/03 02:31:02 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub.h"
+
+int	is_map_character(char c)
+{
+	if (c == '0' || c == '1' || c == 'N'
+		|| c == 'S' || c == 'W' || c == 'E' || c == ' '
+		|| c == '\n' || c == '\t')
+		return (1);
+	return (0);
+}
 
 static void	validate_rgb_value(char **rgb)
 {

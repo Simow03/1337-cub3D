@@ -6,20 +6,11 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 11:34:46 by mstaali           #+#    #+#             */
-/*   Updated: 2024/11/02 17:37:15 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/11/03 02:31:46 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub.h"
-
-int	is_map_character(char c)
-{
-	if (c == '0' || c == '1' || c == 'N'
-		|| c == 'S' || c == 'W' || c == 'E' || c == ' '
-		|| c == '\n' || c == '\t' || c == 'O' || c == 'C')
-		return (1);
-	return (0);
-}
 
 void	validate_map_chars(t_my_mlx *mlx, char *line, int i)
 {
@@ -91,6 +82,20 @@ char	*read_from_file(t_my_mlx *mlx, char *av)
 	return (free(line), line2);
 }
 
+void	check_player(t_my_mlx *mlx, char **layout)
+{
+	if (!player_exists(layout + 6))
+	{
+		free_textures(mlx);
+		error_mssg_2(PLAYER_NOT_FOUND);
+	}
+	if (!player_neighbs(layout + 6) || !valid_zero_neighbs(layout + 6))
+	{
+		free_textures(mlx);
+		error_mssg_2(NEIGHBOURS);
+	}
+}
+
 void	get_layout(t_my_mlx *mlx, char *av)
 {
 	char	*line;
@@ -106,11 +111,7 @@ void	get_layout(t_my_mlx *mlx, char *av)
 		free_textures(mlx);
 		error_mssg_2(WALLS);
 	}
-	if (!player_exists(layout + 6))
-	{
-		free_textures(mlx);
-		error_mssg_2(PLAYER_NOT_FOUND);
-	}
+	check_player(mlx, layout);
 	fill_map(mlx, layout + 6);
 	ft_dbl_free(layout);
 }

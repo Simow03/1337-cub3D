@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 00:34:48 by mstaali           #+#    #+#             */
-/*   Updated: 2024/11/02 00:59:59 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/11/03 01:03:39 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ typedef enum e_error
 	WALLS,
 	PLAYER_NOT_FOUND,
 	DOORS,
-	FRAMES
+	FRAMES,
+	NEIGHBOURS
 }	t_error;
 
 typedef struct s_texture
@@ -128,4 +129,8 @@ void			fill_map(t_my_mlx *mlx, char **layout);
 char			*ft_gnl_strjoin(char *stored, char *buffer);
 char			*ft_gnl_strchr(char *s, int c);
 size_t			ft_gnl_strlen(char *s);
+int				player_neighbs(char **layout);
+int				valid_zero_neighbs(char **map);
+int				is_map_character(char c);
+int				is_map_character(char c);
 #endif

@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 14:52:06 by mstaali           #+#    #+#             */
-/*   Updated: 2024/11/02 17:34:51 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/11/03 02:27:40 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,7 @@ void	error_mssg_2(int flag)
 		ft_putstr_fd("Invalid door placement\n\n", STDERR_FILENO);
 	if (flag == FRAMES)
 		ft_putstr_fd("Frame did not load\n\n", STDERR_FILENO);
+	if (flag == NEIGHBOURS)
+		ft_putstr_fd("Invalid player/zero neighbour\n\n", STDERR_FILENO);
 	exit(EXIT_FAILURE);
 }

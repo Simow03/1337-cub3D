@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 00:35:04 by mstaali           #+#    #+#             */
-/*   Updated: 2024/11/02 19:24:25 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/11/03 02:20:37 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ typedef enum e_error
 	COLORS,
 	WALLS,
 	PLAYER_NOT_FOUND,
+	NEIGHBOURS,
 	DOORS,
 	FRAMES
 }	t_error;
@@ -125,4 +126,7 @@ void			fill_map(t_my_mlx *mlx, char **layout);
 char			*ft_gnl_strjoin(char *stored, char *buffer);
 char			*ft_gnl_strchr(char *s, int c);
 size_t			ft_gnl_strlen(char *s);
+int				player_neighbs(char **layout);
+int				valid_zero_neighbs(char **map);
+int				is_map_character(char c);
 #endif
