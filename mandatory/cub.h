@@ -6,7 +6,7 @@
 /*   By: achater <achater@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 00:35:04 by mstaali           #+#    #+#             */
-/*   Updated: 2024/11/03 14:03:24 by achater          ###   ########.fr       */
+/*   Updated: 2024/11/03 14:47:17 by achater          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,9 @@
 # include <math.h>
 # include <fcntl.h>
 # include <stdio.h>
-# include "../MLX42/include/MLX42/MLX42.h"
+# include "../../MLX42/include/MLX42/MLX42.h"
 
-# include "libft/libft.h"
+# include "../libft/libft.h"
 
 typedef enum e_error
 {

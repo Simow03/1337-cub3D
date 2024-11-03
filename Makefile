@@ -8,9 +8,9 @@ LIBS = -L /Users/$(USER)/.brew/lib -lglfw -framework Cocoa -framework OpenGL -fr
 M_NAME = cub3D
 B_NAME = cub3D_bonus
 
-M_SRCS = cub.c ./execution/draw.c ./execution/hooks.c ./execution/ray_casting.c parsing/error_handle.c parsing/get_layout.c \
-	parsing/get_next_line.c parsing/check_textures.c parsing/extract_map.c parsing/textures.c parsing/colors.c \
-	parsing/map_utils.c parsing/gnl_utils.c parsing/check_neighbours.c execution/ray_casting_utils.c
+M_SRCS = mandatory/cub.c mandatory/execution/draw.c mandatory/execution/hooks.c mandatory/execution/ray_casting.c mandatory/parsing/error_handle.c mandatory/parsing/get_layout.c \
+	mandatory/parsing/get_next_line.c mandatory/parsing/check_textures.c mandatory/parsing/extract_map.c mandatory/parsing/textures.c mandatory/parsing/colors.c \
+	mandatory/parsing/map_utils.c mandatory/parsing/gnl_utils.c mandatory/parsing/check_neighbours.c mandatory/execution/ray_casting_utils.c
 M_OBJS = $(M_SRCS:.c=.o)
 
 B_SRCS = bonus/cub_bonus.c bonus/execution/draw_bonus.c bonus/execution/hooks_bonus.c bonus/execution/ray_casting_bonus.c bonus/parsing/error_handle_bonus.c \
@@ -31,15 +31,15 @@ pre:
 $(M_NAME): $(M_OBJS)
 	$(CC) $(CFLAGS) $(M_OBJS) $(MLX42_LIB) libft/libft.a $(LIBS) -o $(M_NAME)
 
-%.o: %.c cub.h
-	$(CC) $(CFLAGS)  -c $< -o $@
-
 bonus/%.o : bonus/%.c bonus/cub_bonus.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
+mandatory/%.o: mandatory/%.c mandatory/cub.h
+	$(CC) $(CFLAGS)  -c $< -o $@
+
+
 $(B_NAME): $(B_OBJS)
 	$(CC) $(CFLAGS) $(M_OBJS) $(MLX42_LIB) libft/libft.a $(LIBS) -o $(B_NAME)
-
 
 bonus: libft_make pre $(B_OBJS)
 	$(CC) $(CFLAGS) $(B_OBJS) $(MLX42_LIB) libft/libft.a $(LIBS) -o $(B_NAME)
