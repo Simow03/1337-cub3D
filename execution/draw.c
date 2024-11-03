@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
+/*   By: achater <achater@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 10:10:05 by achater           #+#    #+#             */
-/*   Updated: 2024/11/02 00:55:39 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/11/03 11:44:35 by achater          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	initiate_angle_pos(t_my_mlx *mlx)
 	unsigned int	i;
 	unsigned int	j;
 
-	(1) && (i = -1, mlx->hidden = 1);
+	i = -1;
 	while (++i < mlx->rows)
 	{
 		j = -1;
@@ -61,7 +61,6 @@ void	main_fct(t_my_mlx *mlx)
 	mlx_image_to_window(mlx->mlx, mlx->img, 0, 0);
 	mlx_set_cursor_mode(mlx->mlx, MLX_MOUSE_HIDDEN);
 	mlx_loop_hook(mlx->mlx, hook_fct, mlx);
-	// // mlx_close_window(mlx);
 	mlx_loop(mlx->mlx);
-	// mlx_terminate(mlx->mlx);
+	mlx_terminate(mlx->mlx);
 }

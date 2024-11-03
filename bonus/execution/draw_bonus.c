@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
+/*   By: achater <achater@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 11:08:58 by achater           #+#    #+#             */
-/*   Updated: 2024/11/02 00:39:38 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/11/03 11:44:42 by achater          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,5 +140,5 @@ void	main_fct(t_my_mlx *mlx)
 	mlx_loop_hook(mlx->mlx, hook_fct, mlx);
 	// // mlx_close_window(mlx);
 	mlx_loop(mlx->mlx);
-	// mlx_terminate(mlx->mlx);
+	mlx_terminate(mlx->mlx);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
+/*   By: achater <achater@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 00:35:04 by mstaali           #+#    #+#             */
-/*   Updated: 2024/11/03 02:20:37 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/11/03 10:53:16 by achater          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,12 +59,6 @@ typedef struct s_my_mlx
 {
 	mlx_t			*mlx;
 	mlx_image_t		*img;
-	mlx_image_t		**sprite_frames;
-	mlx_texture_t	**sprite_textures;
-	int				num_frames;
-	int				curr_frame;
-	int				is_animated;
-	double			last_frame_time;
 	char			**map;
 	double			angle;
 	double			x;
@@ -84,15 +78,9 @@ typedef struct s_my_mlx
 	double			wall_inter_y;
 	double			wall_inter;
 	t_texture		*texture;
-	int				door;
-	int				v_door;
-	int				h_door;
-	int				hidden;
 	double			wall_height;
 	double			wall_start;
 	double			wall_end;
-	double			j2;
-	double			i2;
 }	t_my_mlx;
 
 void			main_fct(t_my_mlx *mlx);
@@ -101,9 +89,6 @@ void			draw_mlx(t_my_mlx *mlx);
 void			ray_casting(t_my_mlx *mlx);
 int32_t			ft_pixel(int32_t r, int32_t g, int32_t b, int32_t a);
 void			normalize_angle(double *angle);
-void			draw_player(t_my_mlx *mlx, int x, int y, int color);
-void			draw_mini_map(t_my_mlx *mlx);
-void			open_close_door(t_my_mlx *mlx);
 void			error_mssg(int flag);
 void			error_mssg_2(int flag);
 void			get_layout(t_my_mlx *mlx, char *av);

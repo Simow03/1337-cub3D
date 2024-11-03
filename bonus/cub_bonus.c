@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_bonus.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
+/*   By: achater <achater@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 13:33:23 by achater           #+#    #+#             */
-/*   Updated: 2024/11/02 00:39:38 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/11/03 11:44:28 by achater          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,16 @@ void	check_extension(char *av)
 	error_mssg(EXTENSION);
 }
 
+void	f()
+{
+	system("lsof -c cub3D");
+	system("leaks cub3D");
+}
 int	main(int ac, char **av)
 {
 	t_my_mlx	*mlx;
 
+	atexit(f);
 	if (ac != 2)
 		error_mssg(INVALID_INPUT);
 	else
@@ -52,6 +58,6 @@ int	main(int ac, char **av)
 		mlx->width = 1280;
 		mlx->height = 720;
 		main_fct(mlx);
-		return (0);
+		exit(0);
 	}
 }

@@ -1,4 +1,4 @@
-NO        textures/GRAY15 16.png
+NO textures/GRAY1516.png
 
 SO textures/GRAY18.png
 
@@ -7,7 +7,6 @@ WE textures/GRAY19.png
 
 
 EA textures/GRAY22.png
-DO textures/GRAY22.png
 
 
 F 44,49,55
@@ -16,6 +15,6 @@ F 44,49,55
 C 26,26,26
 
 11111
-10  1
+10111
 1N001
 11111
