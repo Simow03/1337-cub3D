@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_bonus.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
+/*   By: achater <achater@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 13:33:23 by achater           #+#    #+#             */
-/*   Updated: 2024/11/03 12:54:15 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/11/03 13:32:17 by achater          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void	ft_exit(t_my_mlx *mlx)
 {
+	int	i;
+
+	i = -1;
 	mlx_delete_texture(mlx->texture->no_tex);
 	mlx_delete_texture(mlx->texture->so_tex);
 	mlx_delete_texture(mlx->texture->ea_tex);
@@ -21,7 +24,6 @@ void	ft_exit(t_my_mlx *mlx)
 	mlx_delete_texture(mlx->texture->door_tex);
 	free(mlx->texture);
 	ft_dbl_free(mlx->map);
-	int	i = -1;
 	while (++i < mlx->num_frames)
 		if (mlx->sprite_textures[i])
 			mlx_delete_texture(mlx->sprite_textures[i]);
@@ -55,15 +57,10 @@ void	check_extension(char *av)
 	error_mssg(EXTENSION);
 }
 
-void	f()
-{
-	system("leaks cub3D_bonus");
-}
 int	main(int ac, char **av)
 {
 	t_my_mlx	*mlx;
 
-	atexit(f);
 	if (ac != 2)
 		error_mssg(INVALID_INPUT);
 	else
@@ -76,6 +73,6 @@ int	main(int ac, char **av)
 		mlx->height = 720;
 		main_fct(mlx);
 		ft_exit(mlx);
-		return(0);
+		return (0);
 	}
 }

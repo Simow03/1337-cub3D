@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub_bonus.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
+/*   By: achater <achater@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 00:34:48 by mstaali           #+#    #+#             */
-/*   Updated: 2024/11/03 01:03:39 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/11/03 14:02:38 by achater          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,9 @@ void			normalize_angle(double *angle);
 void			draw_player(t_my_mlx *mlx, int x, int y, int color);
 void			draw_mini_map(t_my_mlx *mlx);
 void			open_close_door(t_my_mlx *mlx);
+void			rotate(t_my_mlx *mlx, int angle);
+double			find_right_dist(t_my_mlx *mlx, double a);
+void			initiate_angle_pos(t_my_mlx *mlx);
 void			error_mssg(int flag);
 void			error_mssg_2(int flag);
 void			get_layout(t_my_mlx *mlx, char *av);

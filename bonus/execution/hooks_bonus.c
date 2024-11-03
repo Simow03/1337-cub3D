@@ -3,23 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   hooks_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
+/*   By: achater <achater@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/23 12:18:53 by achater           #+#    #+#             */
-/*   Updated: 2024/11/02 00:39:38 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/11/03 13:36:06 by achater          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub_bonus.h"
-
-void	rotate(t_my_mlx *mlx, int angle)
-{
-	mlx->angle += angle;
-	if (mlx->angle >= 360)
-		mlx->angle -= 360;
-	if (mlx->angle < 0)
-		mlx->angle += 360;
-}
 
 int	check_fct(t_my_mlx *mlx, double x, double y)
 {

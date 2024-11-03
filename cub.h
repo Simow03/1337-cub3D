@@ -6,7 +6,7 @@
 /*   By: achater <achater@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 00:35:04 by mstaali           #+#    #+#             */
-/*   Updated: 2024/11/03 10:53:16 by achater          ###   ########.fr       */
+/*   Updated: 2024/11/03 14:03:24 by achater          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ void			draw_mlx(t_my_mlx *mlx);
 void			ray_casting(t_my_mlx *mlx);
 int32_t			ft_pixel(int32_t r, int32_t g, int32_t b, int32_t a);
 void			normalize_angle(double *angle);
+double			find_right_dist(t_my_mlx *mlx, double a);
 void			error_mssg(int flag);
 void			error_mssg_2(int flag);
 void			get_layout(t_my_mlx *mlx, char *av);

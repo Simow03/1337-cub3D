@@ -4,6 +4,7 @@
     "stdlib.h": "c",
     "locale": "cpp",
     "iterator": "c",
-    "libft.h": "c"
+    "libft.h": "c",
+    "cub_bonus.h": "c"
   }
 }

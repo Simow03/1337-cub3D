@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
+/*   By: achater <achater@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 13:33:23 by achater           #+#    #+#             */
-/*   Updated: 2024/11/03 12:28:56 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/11/03 13:31:36 by achater          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,8 @@ void	check_extension(char *av)
 	error_mssg(EXTENSION);
 }
 
-void	f()
-{
-	system("leaks cub3D");
-}
-
 int	main(int ac, char **av)
 {
-	atexit(f);
 	t_my_mlx	*mlx;
 
 	if (ac != 2)
