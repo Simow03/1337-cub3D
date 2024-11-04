@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 00:29:50 by mstaali           #+#    #+#             */
-/*   Updated: 2024/11/04 12:02:15 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/11/04 12:14:42 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,20 @@ int	is_map_character(char c)
 	return (0);
 }
 
+int	ft_nan(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (!ft_isdigit(str[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 static void	validate_rgb_value(char **rgb)
 {
 	int	i;
@@ -28,11 +42,16 @@ static void	validate_rgb_value(char **rgb)
 	i = -1;
 	while (rgb[++i])
 	{
+		if (!ft_nan(rgb[i]))
+		{
+			ft_dbl_free(rgb);
+			error_mssg_2(COLORS);
+		}
 		if (ft_atof(rgb[i]) < 0 || ft_atof(rgb[i]) > 255
 			|| ft_atof(rgb[i]) != ft_atoi(rgb[i]))
 		{
 			ft_dbl_free(rgb);
-			error_mssg(COLORS);
+			error_mssg_2(COLORS);
 		}
 	}
 }
