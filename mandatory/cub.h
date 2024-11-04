@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: achater <achater@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 00:35:04 by mstaali           #+#    #+#             */
-/*   Updated: 2024/11/03 14:47:17 by achater          ###   ########.fr       */
+/*   Updated: 2024/11/04 10:06:11 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,5 @@ char			*ft_gnl_strjoin(char *stored, char *buffer);
 char			*ft_gnl_strchr(char *s, int c);
 size_t			ft_gnl_strlen(char *s);
 int				player_neighbs(char **layout);
-int				valid_zero_neighbs(char **map);
 int				is_map_character(char c);
 #endif

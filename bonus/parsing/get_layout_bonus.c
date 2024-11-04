@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 11:34:46 by mstaali           #+#    #+#             */
-/*   Updated: 2024/11/03 02:33:23 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/11/04 10:04:55 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ void	check_player(t_my_mlx *mlx, char **layout)
 		free_textures(mlx);
 		error_mssg_2(PLAYER_NOT_FOUND);
 	}
-	if (!player_neighbs(layout + 7) || !valid_zero_neighbs(layout + 7))
+	if (!player_neighbs(layout + 7))
 	{
 		free_textures(mlx);
 		error_mssg_2(NEIGHBOURS);
