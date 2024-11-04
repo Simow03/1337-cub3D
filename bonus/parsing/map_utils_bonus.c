@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 01:13:51 by mstaali           #+#    #+#             */
-/*   Updated: 2024/11/03 00:52:24 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/11/04 10:53:11 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ char	*trim_line(t_my_mlx *mlx, char *line)
 {
 	char	*line2;
 
+	if (!line)
+		return (NULL);
 	line2 = ft_strtrim(line, "\n");
 	if (!*line2)
 	{

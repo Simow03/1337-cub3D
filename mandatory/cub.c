@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: achater <achater@student.42.fr>            +#+  +:+       +#+        */
+/*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 13:33:23 by achater           #+#    #+#             */
-/*   Updated: 2024/11/03 13:31:36 by achater          ###   ########.fr       */
+/*   Updated: 2024/11/04 10:46:35 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ void	check_extension(char *av)
 	i = 0;
 	while (av[i] && av[i] != '.')
 		i++;
+	if (i == 0)
+		error_mssg(EXTENSION);
 	if (av[i] != '.')
 		error_mssg(EXTENSION);
 	if (!ft_strcmp(&av[i], ".cub"))
