@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 13:33:23 by achater           #+#    #+#             */
-/*   Updated: 2024/11/06 21:42:57 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/11/07 23:45:26 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,8 @@ void	ft_exit(t_my_mlx *mlx)
 	mlx_delete_texture(mlx->texture->so_tex);
 	mlx_delete_texture(mlx->texture->ea_tex);
 	mlx_delete_texture(mlx->texture->we_tex);
-	free(mlx->texture);
 	ft_dbl_free(mlx->map);
-	free(mlx);
+	free_textures(mlx);
 }
 
 void	free_textures(t_my_mlx *mlx)
@@ -58,7 +57,7 @@ void	f()
 
 int	main(int ac, char **av)
 {
-	// atexit(f);
+	atexit(f);
 	t_my_mlx	*mlx;
 
 	if (ac != 2)

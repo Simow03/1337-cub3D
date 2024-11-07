@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 00:35:04 by mstaali           #+#    #+#             */
-/*   Updated: 2024/11/06 20:34:02 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/11/08 00:19:29 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ typedef enum e_error
 	WALLS,
 	PLAYER_NOT_FOUND,
 	NEIGHBOURS,
-	DOORS,
 	FRAMES
 }	t_error;
 
@@ -113,7 +112,6 @@ void			adjust_color(mlx_image_t *image, unsigned int x, unsigned int y,
 					unsigned int c);
 double			get_text_x(t_my_mlx *mlx, double wall_inter);
 double			get_tex_y(t_my_mlx *mlx, double y, double wall_height);
-unsigned int	rgb_to_uint(char *component);
 void			free_textures(t_my_mlx *mlx);
 void			fill_map(t_my_mlx *mlx, char **layout);
 char			*ft_gnl_strjoin(char *stored, char *buffer);
@@ -121,4 +119,16 @@ char			*ft_gnl_strchr(char *s, int c);
 size_t			ft_gnl_strlen(char *s);
 int				player_neighbs(char **layout);
 int				is_map_character(char c);
+
+
+
+
+void			fill_colors(t_my_mlx *mlx);
+void			is_valid_color(t_my_mlx *mlx, char *color);
+void			split_textures(t_my_mlx *mlx, char **layout);
+void			init_textures(t_my_mlx *mlx);
+void			load_textures(t_my_mlx *mlx);
+void			check_number(t_my_mlx *mlx, char **digits);
+void			assign_number(t_my_mlx *mlx, char **comps);
+void			assign_texture(t_my_mlx *mlx, char **comps);
 #endif
