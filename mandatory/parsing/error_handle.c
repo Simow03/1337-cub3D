@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/10 14:52:06 by mstaali           #+#    #+#             */
-/*   Updated: 2024/11/04 12:08:41 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/11/06 20:09:38 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void	error_mssg(int flag)
 			" <path_to_map_file.cub>\n\n", STDERR_FILENO);
 	if (flag == EMPTY_FILE)
 		ft_putstr_fd("File empty\n\n", STDERR_FILENO);
+	if (flag == MAP_NOT_FOUND)
+		ft_putstr_fd("Map not found\n\n", STDERR_FILENO);
 	if (flag == NEWLINE_MAP)
 		ft_putstr_fd("Map contains newline\n\n", STDERR_FILENO);
 	if (flag == MAP_CHAR)

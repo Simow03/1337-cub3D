@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 00:35:04 by mstaali           #+#    #+#             */
-/*   Updated: 2024/11/04 10:06:11 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/11/06 20:34:02 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef enum e_error
 	INVALID_INPUT,
 	MAP_CHAR,
 	EMPTY_FILE,
+	MAP_NOT_FOUND,
 	NEWLINE_MAP,
 	TEXTURE_ARG,
 	NOT_EXIST,
@@ -47,6 +48,12 @@ typedef enum e_error
 
 typedef struct s_texture
 {
+	char			*c_dup;
+	char			*f_dup;
+	char			*no_dup;
+	char			*so_dup;
+	char			*we_dup;
+	char			*ea_dup;
 	unsigned int	f_clr;
 	unsigned int	c_clr;
 	mlx_texture_t	*no_tex;
@@ -93,7 +100,7 @@ double			find_right_dist(t_my_mlx *mlx, double a);
 void			error_mssg(int flag);
 void			error_mssg_2(int flag);
 void			get_layout(t_my_mlx *mlx, char *av);
-char			*trim_line(t_my_mlx *mlx, char *line);
+char			**trim_line(t_my_mlx *mlx, char *line);
 char			*get_next_line(int fd);
 void			check_textures(t_my_mlx *mlx, char **layout);
 int				is_surrounded_by_walls(char **layout);

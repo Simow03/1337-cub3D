@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 13:33:23 by achater           #+#    #+#             */
-/*   Updated: 2024/11/04 10:46:35 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/11/06 21:42:57 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,12 @@ void	ft_exit(t_my_mlx *mlx)
 
 void	free_textures(t_my_mlx *mlx)
 {
-	mlx_delete_texture(mlx->texture->no_tex);
-	mlx_delete_texture(mlx->texture->so_tex);
-	mlx_delete_texture(mlx->texture->ea_tex);
-	mlx_delete_texture(mlx->texture->we_tex);
+	free(mlx->texture->c_dup);
+	free(mlx->texture->f_dup);
+	free(mlx->texture->no_dup);
+	free(mlx->texture->so_dup);
+	free(mlx->texture->ea_dup);
+	free(mlx->texture->we_dup);
 	free(mlx->texture);
 	free(mlx);
 }
@@ -49,8 +51,14 @@ void	check_extension(char *av)
 	error_mssg(EXTENSION);
 }
 
+void	f()
+{
+	system("leaks cub3D");
+}
+
 int	main(int ac, char **av)
 {
+	// atexit(f);
 	t_my_mlx	*mlx;
 
 	if (ac != 2)

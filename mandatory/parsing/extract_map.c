@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/13 23:02:44 by mstaali           #+#    #+#             */
-/*   Updated: 2024/11/02 17:35:00 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/11/07 03:56:58 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@ int	is_surrounded_by_walls(char **layout)
 
 	x = -1;
 	len = ft_dbl_strlen(layout);
-	if (len == 0)
-		error_mssg(NEWLINE_MAP);
 	while (layout[0][++x])
 		if (layout[0][x] != '1' && layout[0][x] != ' ' && layout[0][x] != '\t')
 			return (0);

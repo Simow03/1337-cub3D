@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 01:24:22 by mstaali           #+#    #+#             */
-/*   Updated: 2024/10/30 17:41:42 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/11/06 23:30:24 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,13 @@ int	ft_atoi(const char *str)
 	if (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i] == '-')
-			sign *= (-1);
+			return (-1);
 		i++;
 	}
-	while (str[i] && ft_isdigit(str[i]))
+	while (str[i])
 	{
+		if (!ft_isdigit(str[i]))
+			return (-1);
 		result *= 10;
 		result += str[i] - '0';
 		i++;
