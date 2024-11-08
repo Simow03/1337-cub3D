@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 00:35:04 by mstaali           #+#    #+#             */
-/*   Updated: 2024/11/08 00:19:29 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/11/08 04:11:04 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,10 +119,6 @@ char			*ft_gnl_strchr(char *s, int c);
 size_t			ft_gnl_strlen(char *s);
 int				player_neighbs(char **layout);
 int				is_map_character(char c);
-
-
-
-
 void			fill_colors(t_my_mlx *mlx);
 void			is_valid_color(t_my_mlx *mlx, char *color);
 void			split_textures(t_my_mlx *mlx, char **layout);

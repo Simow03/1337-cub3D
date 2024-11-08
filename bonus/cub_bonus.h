@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/02 00:34:48 by mstaali           #+#    #+#             */
-/*   Updated: 2024/11/04 10:06:32 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/11/08 04:13:23 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef enum e_error
 	INVALID_INPUT,
 	MAP_CHAR,
 	EMPTY_FILE,
+	MAP_NOT_FOUND,
 	NEWLINE_MAP,
 	TEXTURE_ARG,
 	NOT_EXIST,
@@ -45,6 +46,13 @@ typedef enum e_error
 
 typedef struct s_texture
 {
+	char			*c_dup;
+	char			*f_dup;
+	char			*no_dup;
+	char			*so_dup;
+	char			*we_dup;
+	char			*ea_dup;
+	char			*door_dup;
 	unsigned int	f_clr;
 	unsigned int	c_clr;
 	mlx_texture_t	*no_tex;
@@ -109,9 +117,8 @@ void			initiate_angle_pos(t_my_mlx *mlx);
 void			error_mssg(int flag);
 void			error_mssg_2(int flag);
 void			get_layout(t_my_mlx *mlx, char *av);
-char			*trim_line(t_my_mlx *mlx, char *line);
+char			**trim_line(t_my_mlx *mlx, char *line);
 char			*get_next_line(int fd);
-void			check_textures(t_my_mlx *mlx, char **layout);
 int				is_surrounded_by_walls(char **layout);
 int				player_exists(char **layout);
 void			get_which_texture_side(t_my_mlx *mlx, double ray_x,
@@ -126,7 +133,6 @@ int				is_valid_doors(char **layout);
 void			load_sprite_frames(t_my_mlx *mlx);
 void			animate_sprite(t_my_mlx *mlx);
 void			draw_sprite(t_my_mlx *mlx, mlx_texture_t *s_t, int x, int y);
-unsigned int	rgb_to_uint(char *component);
 void			free_textures(t_my_mlx *mlx);
 void			fill_map(t_my_mlx *mlx, char **layout);
 char			*ft_gnl_strjoin(char *stored, char *buffer);
@@ -135,4 +141,12 @@ size_t			ft_gnl_strlen(char *s);
 int				player_neighbs(char **layout);
 int				is_map_character(char c);
 int				is_map_character(char c);
+void			fill_colors(t_my_mlx *mlx);
+void			is_valid_color(t_my_mlx *mlx, char *color);
+void			split_textures(t_my_mlx *mlx, char **layout);
+void			init_textures(t_my_mlx *mlx);
+void			load_textures(t_my_mlx *mlx);
+void			check_number(t_my_mlx *mlx, char **digits);
+void			assign_number(t_my_mlx *mlx, char **comps);
+void			assign_texture(t_my_mlx *mlx, char **comps);
 #endif

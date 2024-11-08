@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/13 13:33:23 by achater           #+#    #+#             */
-/*   Updated: 2024/11/04 10:47:38 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/11/08 04:03:29 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,13 @@ void	ft_exit(t_my_mlx *mlx)
 
 void	free_textures(t_my_mlx *mlx)
 {
-	mlx_delete_texture(mlx->texture->no_tex);
-	mlx_delete_texture(mlx->texture->so_tex);
-	mlx_delete_texture(mlx->texture->ea_tex);
-	mlx_delete_texture(mlx->texture->we_tex);
-	mlx_delete_texture(mlx->texture->door_tex);
+	free(mlx->texture->c_dup);
+	free(mlx->texture->f_dup);
+	free(mlx->texture->no_dup);
+	free(mlx->texture->so_dup);
+	free(mlx->texture->ea_dup);
+	free(mlx->texture->we_dup);
+	free(mlx->texture->door_dup);
 	free(mlx->texture);
 	free(mlx);
 }

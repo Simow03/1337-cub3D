@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 01:13:51 by mstaali           #+#    #+#             */
-/*   Updated: 2024/11/04 10:53:11 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/11/08 04:12:32 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,18 +51,50 @@ void	fill_map(t_my_mlx *mlx, char **layout)
 	map_padding(mlx, layout);
 }
 
-char	*trim_line(t_my_mlx *mlx, char *line)
+void	check_map_newlines(t_my_mlx *mlx, char *line2)
+{
+	int	i;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (line2[i] && count < 7)
+	{
+		if (line2[i] == '\n' && line2[i + 1] != '\n')
+			count++;
+		i++;
+	}
+	while (line2[i])
+	{
+		if (line2[i] == '\n' && line2[i + 1] == '\n')
+		{
+			free(line2);
+			free(mlx);
+			error_mssg(NEWLINE_MAP);
+		}
+		i++;
+	}
+}
+
+char	**trim_line(t_my_mlx *mlx, char *line)
 {
 	char	*line2;
+	char	**layout;
 
 	if (!line)
-		return (NULL);
+	{
+		free(mlx);
+		error_mssg(EMPTY_FILE);
+	}
 	line2 = ft_strtrim(line, "\n");
-	if (!*line2)
+	if (!line2 || !*line2)
 	{
 		free(line2);
 		free(mlx);
 		error_mssg(EMPTY_FILE);
 	}
-	return (line2);
+	check_map_newlines(mlx, line2);
+	free(line2);
+	layout = ft_split(line, '\n');
+	return (layout);
 }
