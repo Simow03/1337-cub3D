@@ -1,11 +1,28 @@
-NO textures/obsidian_n.png
-SO textures/packed_ice_n.png
-WE textures/stone_n.png
-EA textures/powder_snow_n.png
-DO textures/powder_snow_n.png
+NO textures/GRAY1516.png
 
-C      130,     156,      220
-F    202,     235,    255
- 111
-1001
- 11 1
+SO textures/GRAY18.png
+
+WE textures/GRAY19.png
+EA textures/GRAY22.png
+
+
+F 44,49,55
+
+
+C 26,26,26
+
+11111111111111
+10000001000001
+10010010000001
+11000101010101
+10000001000001
+1001001000N001
+11000101000001
+10000001000001
+10010010000001
+11000101000001
+10000110110001
+10010110100001
+11000110100001
+10000000000001
+11111111111111

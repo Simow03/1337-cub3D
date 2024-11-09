@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 01:13:51 by mstaali           #+#    #+#             */
-/*   Updated: 2024/11/08 00:17:21 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/11/09 05:32:09 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,26 @@ void	check_map_newlines(t_my_mlx *mlx, char *line2)
 	}
 }
 
+void	remove_whitespaces(t_my_mlx *mlx, char **layout)
+{
+	char	*trimmed;
+	int		i;
+
+	i = -1;
+	while (layout[++i])
+	{
+		trimmed = ft_strtrim(layout[i], " \t\n");
+		if (!trimmed)
+		{
+			ft_dbl_free(layout);
+			free(mlx);
+			error_mssg(TEXTURE_ARG);
+		}
+		free(layout[i]);
+		layout[i] = trimmed;
+	}	
+}
+
 char	**trim_line(t_my_mlx *mlx, char *line)
 {
 	char	*line2;
@@ -98,5 +118,6 @@ char	**trim_line(t_my_mlx *mlx, char *line)
 	check_map_newlines(mlx, line2);
 	free(line2);
 	layout = ft_split(line, '\n');
+	remove_whitespaces(mlx, layout);
 	return (layout);
 }

@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 14:58:19 by mstaali           #+#    #+#             */
-/*   Updated: 2024/11/08 00:13:41 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/11/09 05:17:40 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	load_textures(t_my_mlx *mlx)
 	mlx->texture->we_tex = mlx_load_png(mlx->texture->we_dup);
 	mlx->texture->ea_tex = mlx_load_png(mlx->texture->ea_dup);
 	if (mlx->texture->ea_tex == NULL || mlx->texture->so_tex == NULL
-		|| mlx->texture->no_tex == NULL || mlx->texture->so_tex == NULL)
+		|| mlx->texture->no_tex == NULL || mlx->texture->we_tex == NULL)
 	{
 		ft_dbl_free(mlx->map);
 		error_mssg(NOT_EXIST);
