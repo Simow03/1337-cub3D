@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 01:13:51 by mstaali           #+#    #+#             */
-/*   Updated: 2024/11/09 05:32:09 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/11/09 05:41:46 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ void	remove_whitespaces(t_my_mlx *mlx, char **layout)
 		}
 		free(layout[i]);
 		layout[i] = trimmed;
-	}	
+	}
 }
 
 char	**trim_line(t_my_mlx *mlx, char *line)
