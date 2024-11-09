@@ -1,6 +1,6 @@
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror -Iinclude #-fsanitize=address -g
+CFLAGS = -Wall -Wextra -Werror -Iinclude
 
 MLX42_LIB = ../MLX42/build/libmlx42.a
 LIBS = -L /Users/$(USER)/.brew/lib -lglfw -framework Cocoa -framework OpenGL -framework IOKit
