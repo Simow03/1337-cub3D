@@ -6,7 +6,7 @@
 /*   By: mstaali <mstaali@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 01:13:51 by mstaali           #+#    #+#             */
-/*   Updated: 2024/11/09 05:41:49 by mstaali          ###   ########.fr       */
+/*   Updated: 2024/11/09 18:17:06 by mstaali          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	remove_whitespaces(t_my_mlx *mlx, char **layout)
 	int		i;
 
 	i = -1;
-	while (layout[++i])
+	while (layout[++i] && i < 7)
 	{
 		trimmed = ft_strtrim(layout[i], " \t\n");
 		if (!trimmed)
